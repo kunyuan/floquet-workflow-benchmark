@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-nhqw-nonbloch"
+track = "B1"
+split = "train"
+paper_ref = "70699ab6afc7"
+system = "non-Hermitian split-step quantum walk (non-Bloch topology)"
+model_family = "quantum-walk"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["winding_number"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

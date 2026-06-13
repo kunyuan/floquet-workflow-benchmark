@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-pt-cyclic-twolevel"
+track = "B2"
+split = "train"
+paper_ref = "3aad4c898ce6"
+system = "PT-symmetric cyclically driven two-level system"
+model_family = "pt-symmetric"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["mu_plus_over_omega", "mu_minus_over_omega"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"R0": [0.5, 2.0], "omega": [0.5, 2.0], "lam": [0.1, 1.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

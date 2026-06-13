@@ -1,0 +1,35 @@
+{
+ "id": "flq-b3-kicked-harper-ballistic-diffusive",
+ "track": "B3",
+ "split": "validation",
+ "question": "Consider the one-dimensional kicked Harper model (KHM) with Hamiltonian H_KHM = 2J*cos(2*pi*Q*n) + 2J*cos(p/hbar), where n is the site index, p is the conjugate momentum, Q=(sqrt(5)-1)/2 is the incommensurate spatial frequency, hopping amplitude J=1, and hbar=1/8. The unperturbed on-site potential strength is V=0.2, placing the system in the extended (ballistic) regime with unperturbed MSD scaling as m2(t) ~ t^2. A polychromatic harmonic perturbation f_epsilon(t) = (epsilon/sqrt(M)) * sum_{i=1}^{M} cos(omega_i * t) is added, with M=3 mutually incommensurate frequencies omega_i of order 1. At each time step, apply the kick H_kick = 2V*cos(2*pi*Q*n) + f_epsilon(t) to the state, alternating with the kinetic propagator exp(-i*2*cos(p/hbar)*dt/hbar). Compute the long-time mean-square displacement m2(t) = sum_n (n - N/2)^2 * |phi(n,t)|^2 starting from phi(n,0) = delta_{n,N/2}. Scan the perturbation amplitude epsilon from 0 to 0.5. Locate the critical amplitude epsilon_b at which the long-time asymptotic behavior transitions from ballistic scaling (m2 ~ t^2) to normal diffusion (m2 ~ t^1), identified by the crossover in the long-time exponent alpha where m2(t) ~ t^alpha. Output a JSON object {\"epsilon_b\": <value>}.",
+ "answer": {
+  "epsilon_b": 0.1
+ },
+ "verifier": {
+  "type": "scalar_tolerance",
+  "rel_tol": 0.1
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2301.12415",
+  "system": "kicked Harper model (V=0.2, J=1, hbar=1/8, M=3 polychromatic drive)",
+  "model_family": "kicked-harper",
+  "quantity_ids": [
+   "epsilon_b"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "as a representative numerical example for V=0.2 and M=3 one finds epsilon_b ~= 0.10 and alpha_b ~= 1.73 under the same simulation conditions.",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Requires scanning epsilon in [0, 0.5] for M=3 polychromatic kicked Harper model, computing long-time MSD scaling exponent at each epsilon to locate the ballistic-to-diffusive crossover.",
+  "quality_notes": "gold precision insufficient (implied rel half-ulp 0.50); rel_tol capped at 0.1; fetch more digits from original paper before scored use",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "e4c2780006821039",
+   "result": "survived"
+  },
+  "paper_ref": "795b1a722a16",
+  "source_ref": "32ff1804e4d6"
+ }
+}

@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-bose-hubbard-renorm"
+track = "B4"
+split = "train"
+paper_ref = "82a7f9ebab84"
+system = "1D Bose-Hubbard model with sinusoidal tilt drive"
+model_family = "bose-hubbard-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["J_eff_over_J_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"x": [0.1, 3.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

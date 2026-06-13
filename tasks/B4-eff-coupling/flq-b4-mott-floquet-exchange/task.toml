@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-mott-floquet-exchange"
+track = "B4"
+split = "train"
+paper_ref = "705aa49e3aaa"
+system = "Half-filled Hubbard model on honeycomb lattice driven by circularly polarized light"
+model_family = "mott-floquet-magnetism"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["J1_eff_over_J1_bare_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"A0": [0.5, 2.5]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

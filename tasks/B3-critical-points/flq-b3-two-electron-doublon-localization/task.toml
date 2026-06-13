@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-two-electron-doublon-localization"
+track = "B3"
+split = "train"
+paper_ref = "e44844fe6e92"
+system = "1D Hubbard chain (U=10, Delta=1), doublon dynamic localization"
+model_family = "hubbard-doublon"
+gold_provenance = "formula_derived"
+verification_status = "source_verified"
+quantity_ids = ["A_over_omega_DL"]
+
+[verifier]
+type = "scalar_tolerance"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

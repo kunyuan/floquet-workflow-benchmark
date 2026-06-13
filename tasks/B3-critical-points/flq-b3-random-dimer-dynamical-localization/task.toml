@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-random-dimer-dynamical-localization"
+track = "B3"
+split = "validation"
+paper_ref = "c34814c54727"
+system = "1D random-dimer tight-binding chain (N=1501, R/omega=0.3, epsilon_minus=R/3, Q=0.5)"
+model_family = "random-dimer"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["beta_DL_first"]
+
+[verifier]
+type = "scalar_tolerance"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

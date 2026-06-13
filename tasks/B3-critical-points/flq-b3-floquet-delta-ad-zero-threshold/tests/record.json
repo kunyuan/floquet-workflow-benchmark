@@ -1,0 +1,34 @@
+{
+ "id": "flq-b3-floquet-delta-ad-zero-threshold",
+ "track": "B3",
+ "split": "train",
+ "question": "Consider the one-dimensional delta-function scatterer with time-periodic potential H(x,t) = -(hbar^2 / 2mu) d^2/dx^2 + [V_s + V_d cos(omega t)] delta(x), with static potential V_s = 0 (no static component) and oscillating strength V_d. Define the dimensionless driving strength a_d = mu V_d^2 / (8 hbar^3 omega) and scaled kinetic energy epsilon = E / (hbar omega). Quasibound-state energies epsilon = epsilon_R - i epsilon_I (epsilon_I > 0) are found by solving the infinite tridiagonal outgoing-wave matrix equation whose diagonal entries are i sqrt(a_s) + sqrt(epsilon + n) (with a_s = 0) and nearest-neighbor off-diagonals i sqrt(a_d). The 'domain D_0' is defined by 0 < epsilon_R < 1 (energy between the n=0 and n=1 photon-sideband thresholds at epsilon_R = 0 and 1). A real-axis transmission zero exists in the transmission T(epsilon) = sum_n |t_{nm}(epsilon)|^2 for small a_d. Scan a_d from 0 to 1.5. Identify the first critical driving strength a_d_c1 at which this transmission zero in T(epsilon) disappears by colliding with the n=1 photon-sideband threshold at epsilon_R = 1. Report the result to three significant figures. Output a JSON object {\"a_d_c1\": <value>}.",
+ "answer": {
+  "a_d_c1": 0.782
+ },
+ "verifier": {
+  "type": "scalar_tolerance",
+  "rel_tol": 0.001598
+ },
+ "metadata": {
+  "doi": null,
+  "system": "1D driven delta-function scatterer (V_s=0, a_s=0), Floquet sidebands as scattering channels",
+  "model_family": "floquet-delta-scatterer",
+  "quantity_ids": [
+   "a_d_c1"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "numerical continuation of this quasibound-state equation with a_s = 0 yields the representative results: a transmission zero in T(epsilon) disappears at a_d approximately 0.782 when that zero collides with the subband threshold at epsilon_R = 1",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Requires numerical continuation of the infinite-dimensional Floquet tridiagonal outgoing-wave matrix (truncated at convergence) across the full a_d scan, tracking real-energy transmission zeros until one collides with the first photon-sideband threshold.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "09fea9a5fb8d00d4",
+   "result": "survived"
+  },
+  "paper_ref": "55fa65f23741",
+  "source_ref": "9a18c9525cea"
+ }
+}

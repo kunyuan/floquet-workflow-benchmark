@@ -1,0 +1,41 @@
+{
+ "id": "flq-b4-bose-hubbard-renorm",
+ "track": "B4",
+ "split": "train",
+ "question": "Consider a one-dimensional Bose-Hubbard model H = -J * Σ_{<i,j>} (a_i^† a_j + h.c.) + (U/2) * Σ_j n_j(n_j-1), driven by a spatially linear time-periodic force H(t) = H_0 + K cos(omega*t) * Σ_j j * n_j. In the high-frequency limit hbar*omega >> max{J,U} (Floquet-Fock expansion to zeroth order), the effective tunneling amplitude is renormalized by the zeroth-order Bessel function:\n\n  J_eff / J = J_0(K/(hbar*omega))\n\nDeclared symbols:\n  x  — dimensionless drive amplitude K/(hbar*omega), x ∈ (0, 3.0]\n\nOutput a JSON object {\"J_eff_over_J_formula\": \"<closed-form expression string>\"} using only the declared symbol and functions [j0] (scipy.special.j0).",
+ "answer": {
+  "J_eff_over_J_formula": "j0(x)"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "x": [
+    0.1,
+    3.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/physrevlett.95.260404",
+  "system": "1D Bose-Hubbard model with sinusoidal tilt drive",
+  "model_family": "bose-hubbard-floquet",
+  "quantity_ids": [
+   "J_eff_over_J_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "J_eff = J J_0(K/(hbar*omega)); off-diagonal interzone couplings J_{m'-m}(K/hbar*omega) neglected when hbar*omega >> max{J,U}; Floquet-Fock basis derivation; CDT at K/(hbar*omega)~2.405",
+  "verification_status": "source_verified",
+  "difficulty_note": "Zeroth-order high-frequency Floquet-Fock expansion; J_eff/J = J_0(K/hbar*omega) with K/(hbar*omega)=1.5 gives J_0(1.5)=0.51182767.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "be5f3a8e7c3206a9",
+   "result": "cracked"
+  },
+  "paper_ref": "82a7f9ebab84",
+  "source_ref": "d9b7c06bc140"
+ }
+}

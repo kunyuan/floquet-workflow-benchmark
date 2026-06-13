@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-fsotsc-mcm"
+track = "B1"
+split = "validation"
+paper_ref = "7e569501d541"
+system = "2D TI + d-wave SC with periodic mass kick (FSOTSC)"
+model_family = "sotsc"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["majorana_corner_modes_total"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

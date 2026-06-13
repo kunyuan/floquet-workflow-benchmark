@@ -1,0 +1,34 @@
+{
+ "id": "flq-b3-graphene-antidot-e0c1",
+ "track": "B3",
+ "split": "validation",
+ "question": "Consider a graphene antidot lattice with supercell lattice constant L=3.0 nm and circular holes of diameter D=1.6 nm, irradiated by a monochromatic circularly polarized laser with photon energy hbar*Omega=0.8 eV and spatially uniform electric-field amplitude E0 (in atomic units). The static electronic bandstructure of the antidot lattice is computed non-perturbatively using a Dirac-equation plane-wave expansion in the antidot supercell, and the resulting Bloch states serve as the basis for constructing the Floquet Hamiltonian. The Floquet quasienergy spectrum is obtained by diagonalizing the full Floquet Hamiltonian matrix (including all photon-dressed sidebands up to convergence) at each crystal momentum k. Define the quasienergy gap at the Brillouin-zone center (Gamma point) as Delta_epsilon(Gamma) = epsilon_c,Gamma - epsilon_v,Gamma, where epsilon_c and epsilon_v are the lowest conduction and highest valence quasienergy bands. Scan E0 from 0 to 5 a.u. and locate the FIRST critical driving amplitude E0c1 at which Delta_epsilon(Gamma) closes (goes to zero), signaling a Floquet Dirac-point restoration at Gamma. This transition is identified by the appearance of a linear (Dirac-like) quasienergy dispersion near Gamma. Report the critical electric-field amplitude in atomic units. Output a JSON object {\"E0c1_au\": <value>}.",
+ "answer": {
+  "E0c1_au": 2.15
+ },
+ "verifier": {
+  "type": "scalar_tolerance",
+  "rel_tol": 0.005814
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2108.06472",
+  "system": "graphene antidot lattice (L=3.0nm, D=1.6nm circular holes), hbar*Omega=0.8eV laser",
+  "model_family": "graphene-antidot",
+  "quantity_ids": [
+   "E0c1_au"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "For the representative geometry with supercell L=3.0 nm and circular hole diameter D=1.6 nm at photon energy hbar*Omega=0.8 eV, the numerical value of the critical amplitude at which this Gamma-point gap closure and Dirac restoration occur is E0c1=2.15 a.u.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Requires scanning E0 in [0,5] a.u. via full non-perturbative Floquet Hamiltonian diagonalization at each amplitude step, tracking the Gamma-point quasienergy gap to find the first zero-crossing.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "f81ef504199b9cf5",
+   "result": "survived"
+  },
+  "paper_ref": "a13b3d316763",
+  "source_ref": "fddcb052ee15"
+ }
+}

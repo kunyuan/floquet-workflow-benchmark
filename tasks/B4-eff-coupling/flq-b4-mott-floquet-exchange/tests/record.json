@@ -1,0 +1,40 @@
+{
+ "id": "flq-b4-mott-floquet-exchange",
+ "track": "B4",
+ "split": "train",
+ "question": "Consider the half-filled nearest-neighbor Hubbard model on a honeycomb lattice driven by circularly polarized light with dimensionless vector-potential amplitude A0 (A0 = e*E_0*a/(hbar*Omega), where a is the lattice constant). For circularly polarized light the Floquet-dressed hopping amplitudes have Fourier components t^(m) = t1 * J_m(A0) (m-th Bessel function of the first kind). In the Mott-insulating regime (U >> t1), the effective spin exchange coupling J1_eff along each bond follows from second-order Brillouin-Wigner (BW) Floquet perturbation theory: sum over all photon sectors m from -infinity to +infinity (truncated at |m| = 30, which is converged). The bare exchange is J1_bare = 4*t1^2/U. The ratio J1_eff/J1_bare depends only on A0 and the dimensionless drive ratio Omega/U. The drive ratio is fixed at Omega/U = 2/3 (i.e., r = 2/3, within the heating-avoidance window Omega < U). Derive the closed-form expression for J1_eff/J1_bare as a sum over photon sectors.\n\nDeclared symbols:\n  A0  — dimensionless drive amplitude e*E_0*a/(hbar*Omega), A0 ∈ [0.5, 2.5]\n\nNote: r = Omega/U = 2/3 is a declared constant (not a free variable). Sum over photon sectors m = -30 to +30 until converged.\n\nOutput a JSON object {\"J1_eff_over_J1_bare_formula\": \"<expression>\"} using the declared symbol A0 and functions [jv, summ] (jv(m, x) = scipy.special.jv(m, x); summ(f, lo, hi) sums f(m) for m in [lo, hi]).",
+ "answer": {
+  "J1_eff_over_J1_bare_formula": "summ(lambda m: jv(m,A0)**2/(1+m*2/3), -30, 30)"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "A0": [
+    0.5,
+    2.5
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/PhysRevB.103.134435",
+  "system": "Half-filled Hubbard model on honeycomb lattice driven by circularly polarized light",
+  "model_family": "mott-floquet-magnetism",
+  "quantity_ids": [
+   "J1_eff_over_J1_bare_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "J1^(l) = 4*t1^2 * sum_m |J_m(A_l)|^2 / (U + m*Omega); renormalized hopping t^(m) = t1*exp(im*(beta_l+pi))*J_m(A_l); A_l = A0*sqrt(1+cos2chi*cos[2(psi-phi_l)]); Brillouin-Wigner perturbation theory to fourth order",
+  "verification_status": "source_verified",
+  "difficulty_note": "Second-order Brillouin-Wigner Floquet exchange (van Vleck/BW expansion); J1_eff/J1_bare = sum_m |J_m(A_0)|^2/(1+m*Omega/U) with A_0=1.5, Omega/U=2/3 gives 1.24158999.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "24b2ccc820cfc0ab",
+   "result": "cracked"
+  },
+  "paper_ref": "705aa49e3aaa",
+  "source_ref": "910c733a5ba5"
+ }
+}

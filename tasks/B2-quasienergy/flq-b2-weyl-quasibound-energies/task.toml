@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-weyl-quasibound-energies"
+track = "B2"
+split = "validation"
+paper_ref = "c274725d1203"
+system = "Tilted Weyl semimetal, quasi-bound state energies controlling Floquet Fano resonances"
+model_family = "weyl-semimetal"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["Eb_plus_formula", "Eb_minus_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"V0": [3.0, 8.0], "t": [0.5, 2.0], "kz": [0.5, 2.0], "ky": [0.2, 1.0], "k0": [0.5, 2.5], "t1": [0.0, 0.5], "t2": [0.0, 0.15], "L_lat": [0.5, 2.0], "tz": [0.5, 2.0], "phi1": [0.0, 0.5], "phi2": [0.0, 0.5]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

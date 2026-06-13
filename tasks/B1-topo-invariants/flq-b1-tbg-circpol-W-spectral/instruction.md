@@ -1,0 +1,57 @@
+# Workflow context (common to every task in this suite)
+
+You are solving an instance of the **Floquet effective Hamiltonian derivation
+and analysis** workflow. Problems of this class are solved by the following
+pipeline:
+
+1. **Define the time-periodic Hamiltonian** — specify the system and driving
+   parameters to obtain H(t) with period T = 2π/ω.
+2. **Choose a Floquet approach** — select the appropriate method (exact
+   diagonalization of the Floquet matrix, one-period evolution operator,
+   high-frequency expansion, degenerate perturbation theory) based on the
+   driving frequency and amplitude regime.
+3. **Construct the effective Floquet Hamiltonian or Floquet matrix** — obtain
+   a time-independent representation generating the stroboscopic dynamics.
+4. **Compute quasienergies and Floquet states** — obtain the quasienergy
+   spectrum and the corresponding Floquet states.
+5. **Evaluate observables and dynamics** — use the Floquet states to compute
+   the requested time-averaged or stroboscopic quantities (gaps, invariants,
+   critical parameters, effective couplings, …).
+
+Sanity-check your results against exact numerical Floquet evolution for small
+systems where feasible, and check convergence with truncation and time-step
+parameters.
+
+The task below is one concrete problem from this family. Apply the workflow;
+the specific system, parameters, conventions, and requested outputs follow.
+
+---
+
+# Environment & answer protocol (common to every task in this suite)
+
+- Compute environment: Python 3 with numpy and scipy available. No internet
+  access is required or assumed; everything needed is stated in the task.
+- Work in the task directory. You may write any scratch files you need.
+- **Answer emission**: write your final answer to `pred.json` in the task
+  directory — a single JSON object whose keys are exactly the quantity ids
+  requested in the task text (no extra keys). Numeric values as JSON numbers;
+  formula-type answers as expression strings using only the symbols the task
+  declares.
+- Report numeric values to at least 6 significant digits unless the task
+  states a different precision.
+- Convergence is your responsibility: where a calculation involves
+  truncation, grid, or time-step choices, converge them until your answer is
+  stable at the reported precision.
+- **Derivation log (required)**: alongside `pred.json`, write
+  `derivation.md` — a detailed step-by-step account of your solution,
+  organized by the workflow steps above (1. model setup → 2. method choice
+  and why → 3. construction → 4. spectrum → 5. observables). Show the
+  actual derivation: intermediate expressions, the equations you solved,
+  numerical convergence checks, and how each requested quantity was
+  obtained. State explicitly where you made approximations and why they are
+  valid in this regime. This log is not scored against the gold but is
+  collected with your answer.
+
+---
+
+Consider the continuum model of twisted bilayer graphene (TBG) under off-resonant circularly polarized light. The static TBG Hamiltonian H is the continuum model with two rotated monolayer graphene Dirac Hamiltonians (intralayer hopping tau = 2.73 eV, graphene lattice constant a = 1.42 angstrom) coupled by interlayer moire tunneling with AB coupling w_1 = 110 meV and relaxation ratio w_0/w_1 = 0.8. The drive is circularly polarized light with photon energy hbar*Omega = 3 eV and photoinduced gap parameter P = (3*tau*e*a*E)^2 / (2*hbar^3*Omega^3) = 10 meV (where E is the peak electric field). In the off-resonant high-frequency limit (hbar*Omega >> P, hbar*Omega > hbar*Omega* ~ 1.2 eV), the leading effect of the drive on each graphene layer is an effective Haldane mass term eta*P*sigma_z added to the single-layer Dirac Hamiltonians near the K (eta=+1) and K-prime (eta=-1) valleys, where sigma_z is the sublattice Pauli matrix. For twist angle theta = 1.2 degrees, which satisfies theta > theta* ~ 1 degree (the threshold above which the driven low-energy bands become topological), the W_epsilon^3 spectral winding invariant is defined as the integer that counts the net number of chiral edge states at quasienergy epsilon for a single spin and valley. The invariant in the epsilon = 0 gap is computed per spin and valley from the Floquet Hamiltonian spectrum. Sign convention: W_spectral is defined with the same orientation as in the paper, where right-circular polarization (electric field rotating counter-clockwise in the xy-plane when viewed along +z, i.e., sigma^+ helicity) is applied; the invariant counts chiral edge modes with the convention that a right-mover edge mode at the top edge contributes +1. What is the value of the W_{epsilon=0}^3 spectral winding invariant per single spin and valley for these parameters (theta = 1.2 degrees, P = 10 meV, hbar*Omega = 3 eV, w_0/w_1 = 0.8), which lies in the topological phase region with theta > theta* and P below the critical value at which the gap Delta to remote bands closes? Output a JSON object {"W_spectral": <integer>}.

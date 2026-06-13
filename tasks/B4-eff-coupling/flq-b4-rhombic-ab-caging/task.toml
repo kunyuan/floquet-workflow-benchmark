@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-rhombic-ab-caging"
+track = "B4"
+split = "validation"
+paper_ref = "92abd5151e53"
+system = "Rhombic photonic waveguide lattice with sinusoidal propagation-constant modulation"
+model_family = "photonic-rhombic-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["kappa0_over_kappa_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"x": [0.1, 4.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

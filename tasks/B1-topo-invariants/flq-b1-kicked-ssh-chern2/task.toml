@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-kicked-ssh-chern2"
+track = "B1"
+split = "train"
+paper_ref = "c9283b636c5a"
+system = "kicked extended SSH chain (synthetic 2D topology via crystal angle)"
+model_family = "kicked-ssh"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["max_chern_number_magnitude"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

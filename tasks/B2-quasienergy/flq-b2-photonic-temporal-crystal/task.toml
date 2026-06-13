@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-photonic-temporal-crystal"
+track = "B2"
+split = "train"
+paper_ref = "42dc4ff8690c"
+system = "Photonic temporal crystal with square-wave permittivity modulation"
+model_family = "photonic-temporal-crystal"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["Omega_k_T_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"phi1": [0.1, 1.0], "phi2": [0.05, 0.55], "r_imp": [1.2, 3.5]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

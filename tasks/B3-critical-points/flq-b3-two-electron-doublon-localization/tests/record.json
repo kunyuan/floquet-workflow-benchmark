@@ -1,0 +1,33 @@
+{
+ "id": "flq-b3-two-electron-doublon-localization",
+ "track": "B3",
+ "split": "train",
+ "question": "Consider a one-dimensional tight-binding lattice with N sites, single-electron transfer integral Delta=1, and on-site Hubbard repulsion U=10 (large-U regime, U >> Delta). Both electrons start colocated at site 0: C_{l,m}(0) = delta_{l,0}*delta_{m,0}. A spatially uniform oscillating electric field is applied such that the single-electron coupling is -eE(t)*d = A*cos(omega*t) with drive frequency omega=1 and variable amplitude A. The doublon (on-site two-electron bound state) carries charge -2e and thus couples to the field as -2eE(t)*d = 2A*cos(omega*t) for its center-of-mass coordinate. Run the full Floquet pipeline: for each A value compute the one-period evolution operator U(T,0) (T=2*pi/omega) of the two-electron Hamiltonian, diagonalize it to obtain Floquet quasienergies, and identify Floquet states with doublon character (same-site weight > 0.9). The dynamic localization condition for the doublon is reached when the doublon quasienergy band collapses — that is, the first drive amplitude at which coherent spreading of the doublon is suppressed and the bandwidth of the doublon Floquet miniband goes to zero. Scan A/omega from 0.5 to 2.0. Report the first critical amplitude ratio (A/omega)_DL at which the doublon band collapses. Units: A and omega share the same energy units (hbar=1). Output a JSON object {\"A_over_omega_DL\": <value>}.",
+ "answer": {
+  "A_over_omega_DL": 1.2024
+ },
+ "verifier": {
+  "type": "scalar_tolerance"
+ },
+ "metadata": {
+  "doi": "10.1103/physrevb.67.153102",
+  "system": "1D Hubbard chain (U=10, Delta=1), doublon dynamic localization",
+  "model_family": "hubbard-doublon",
+  "quantity_ids": [
+   "A_over_omega_DL"
+  ],
+  "gold_provenance": "formula_derived",
+  "source_excerpt": "dynamic localization of the interacting bound pair is expected when 2A/omega coincides with a root of the zeroth-order Bessel function J0. The first root of J0 occurs at 2A/omega = 2.4048.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Requires scanning A/omega in [0.5, 2.0] with U=10 large-interaction regime; for each point run full two-electron Floquet computation, project onto doublon sector, and identify quasienergy band collapse at J0(2A/omega)=0.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "561667ee47f3b779",
+   "result": "cracked"
+  },
+  "paper_ref": "e44844fe6e92",
+  "source_ref": "20ea6e601c55"
+ }
+}

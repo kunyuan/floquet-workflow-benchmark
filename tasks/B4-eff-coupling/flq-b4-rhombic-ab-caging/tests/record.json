@@ -1,0 +1,41 @@
+{
+ "id": "flq-b4-rhombic-ab-caging",
+ "track": "B4",
+ "split": "validation",
+ "question": "Consider a quasi-1D rhombic photonic waveguide lattice with sinusoidal propagation-constant modulation at M=1 resonance (sigma = omega, one modulation period equals one lattice unit cell). In the high-frequency limit omega >> kappa, the Floquet-renormalized nearest-neighbor hopping amplitude is given by the M-th order Bessel function of the first kind:\n\n  kappa_0 / kappa = J_M(Gamma)  [M=1]\n\nwhere Gamma = A/omega is the dimensionless modulation depth.\n\nDeclared symbols:\n  x  — dimensionless modulation depth Gamma = A/omega, x ∈ (0, 4.0]\n\nOutput a JSON object {\"kappa0_over_kappa_formula\": \"<closed-form expression string>\"} using only the declared symbol and functions [j1] (scipy.special.j1, first-order Bessel).",
+ "answer": {
+  "kappa0_over_kappa_formula": "j1(x)"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "x": [
+    0.1,
+    4.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1364/ol.39.005892",
+  "system": "Rhombic photonic waveguide lattice with sinusoidal propagation-constant modulation",
+  "model_family": "photonic-rhombic-floquet",
+  "quantity_ids": [
+   "kappa0_over_kappa_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "kappa_0 = kappa * J_M(Gamma); phi_1 = M*(pi+phi)+Gamma*sin(phi); gamma = 4*M*phi; quasi-energy bands E_0=0, E_pm = pm 2*kappa_0*sqrt(1+cos(gamma/2)cos(q-gamma/2)); high-frequency effective rhombic model",
+  "verification_status": "source_verified",
+  "difficulty_note": "High-frequency Floquet cycle-averaging for rhombic waveguide lattice with M=1 resonance; kappa_0/kappa = J_1(Gamma) with Gamma=2 gives J_1(2)=0.57672481.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "5c316308d3bc047b",
+   "result": "cracked"
+  },
+  "paper_ref": "92abd5151e53",
+  "source_ref": "1252bae999c4"
+ }
+}

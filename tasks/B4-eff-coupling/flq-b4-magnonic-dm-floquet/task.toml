@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-magnonic-dm-floquet"
+track = "B4"
+split = "train"
+paper_ref = "c3c087be0391"
+system = "Honeycomb ferromagnet magnons driven by circularly polarized light (Aharonov-Casher)"
+model_family = "magnonic-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["D_F_omega_over_J2_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"eps0": [0.1, 4.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

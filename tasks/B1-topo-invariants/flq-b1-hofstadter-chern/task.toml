@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-hofstadter-chern"
+track = "B1"
+split = "train"
+paper_ref = "3e7e803a42f4"
+system = "Harper-Hofstadter model on optical lattice (flux Phi=pi/2)"
+model_family = "graphene-driven"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["chern_number_lowest_band"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

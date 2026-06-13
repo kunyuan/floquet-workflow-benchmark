@@ -1,0 +1,83 @@
+{
+ "id": "flq-b2-weyl-quasibound-energies",
+ "track": "B2",
+ "split": "validation",
+ "question": "Consider a three-dimensional tilted Weyl semimetal (hbar=1) with a one-dimensional square-well potential V(x) = -V_0 for |x| <= L/2, V(x) = 0 for |x| > L/2 applied along the x direction. Conserved momenta ky and kz label the transverse plane-wave factors. For l=0 (ground quasi-bound level), the quantized longitudinal wavenumber is q_0 = pi/(2*L). The chirality is s=+1. Energy reference: all energies are measured relative to V=0 outside the well (inside the well V(x) = -V0 with V0 > 0). The quasi-bound Fano resonance states lie above the continuum edge, so E_b > 0 for all valid parameter choices.\n\nThe tilt parameter is t_tilde = 2*t1*sin(phi1 - k0) + 4*t2*sin(phi2 - 2*k0). Derive the closed-form energies E_b of the two quasi-bound branches (the plus/minus pair) of the l=0 level, accounting for the well shift, the anisotropic Weyl dispersion (transverse velocity t in the x and y directions, z-direction velocity tz*sin(k0)), and the tilt contribution along z.\n\nDeclared symbols:\n  V0     — well depth (>0), V0 ∈ [3, 8]\n  t      — transverse Weyl velocity (>0), t ∈ [0.5, 2]\n  kz     — conserved z-momentum, kz ∈ [0.5, 2]\n  ky     — conserved y-momentum, ky ∈ [0.2, 1]\n  k0     — Weyl node wavenumber, k0 ∈ [0.5, 2.5]\n  t1     — first tilt coefficient, t1 ∈ [0, 0.5]\n  t2     — second tilt coefficient, t2 ∈ [0, 0.15]\n  L_lat  — well half-length L, L_lat ∈ [0.5, 2]\n  tz     — z-direction Weyl velocity, tz ∈ [0.5, 2]\n  phi1   — tilt phase offset 1, phi1 ∈ [0, 0.5]\n  phi2   — tilt phase offset 2, phi2 ∈ [0, 0.5]\n\nOutput a JSON object {\"Eb_plus_formula\": \"<expr>\", \"Eb_minus_formula\": \"<expr>\"} using only the declared symbols and functions [sqrt, sin, pi].",
+ "answer": {
+  "Eb_plus_formula": "V0 + sqrt((pi/(2*L_lat))**2*t**2 + t**2*ky**2 + tz**2*kz**2*sin(k0)**2) + kz*(2*t1*sin(phi1 - k0) + 4*t2*sin(phi2 - 2*k0))",
+  "Eb_minus_formula": "V0 - sqrt((pi/(2*L_lat))**2*t**2 + t**2*ky**2 + tz**2*kz**2*sin(k0)**2) + kz*(2*t1*sin(phi1 - k0) + 4*t2*sin(phi2 - 2*k0))"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "V0": [
+    3.0,
+    8.0
+   ],
+   "t": [
+    0.5,
+    2.0
+   ],
+   "kz": [
+    0.5,
+    2.0
+   ],
+   "ky": [
+    0.2,
+    1.0
+   ],
+   "k0": [
+    0.5,
+    2.5
+   ],
+   "t1": [
+    0.0,
+    0.5
+   ],
+   "t2": [
+    0.0,
+    0.15
+   ],
+   "L_lat": [
+    0.5,
+    2.0
+   ],
+   "tz": [
+    0.5,
+    2.0
+   ],
+   "phi1": [
+    0.0,
+    0.5
+   ],
+   "phi2": [
+    0.0,
+    0.5
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2307.15928",
+  "system": "Tilted Weyl semimetal, quasi-bound state energies controlling Floquet Fano resonances",
+  "model_family": "weyl-semimetal",
+  "quantity_ids": [
+   "Eb_plus_formula",
+   "Eb_minus_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "E_b = V_0 +/- sqrt((2l+1)^2*pi^2*t^2/(4L^2)+t^2*k_y^2+t_z^2*k_z^2*sin^2(k_0)) + k_z*t_tilde; t_tilde = 2*t1*sin(phi1-s*k0)+4*t2*sin(phi2-2*s*k0).",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula (conclusion_1): E_b = V0 +/- sqrt((2l+1)^2*pi^2*t^2/(4L^2)+t^2*k_y^2+t_z^2*k_z^2*sin^2(k0)) + k_z*t_tilde. With k_0=pi/2, phi_1=phi_2=0, s=+1: sin(phi_1-s*k_0)=sin(-pi/2)=-1, sin(phi_2-2s*k_0)=sin(-pi)=0. t_tilde = 2*0.3*(-1)+0 = -0.6. under_sqrt = pi^2/4+0.25+1.0 = 3.7174011003; sqrt = 1.9280563011. k_z*t_tilde = -0.6. Eb+ = 5+1.92805630-0.6 = 6.3280563011. Eb- = 5-1.92805630-0.6 = 2.4719436989. Both real. Fano resonances occur at E_F = E_b + n*omega_drive (n integer, n=0 is direct).",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "f0a68d3bd23ecc7a",
+   "result": "survived"
+  },
+  "paper_ref": "c274725d1203",
+  "source_ref": "0de7c3be2d82"
+ }
+}

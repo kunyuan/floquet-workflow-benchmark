@@ -1,0 +1,34 @@
+{
+ "id": "flq-b1-ssh-synth-winding2",
+ "track": "B1",
+ "split": "validation",
+ "question": "Consider a synthetic-frequency-dimension dimer chain realized in a fiber-loop cavity with two electro-optic modulators (EOMs). The effective Hamiltonian is H(k) = [[0, g(k)], [g*(k), 0]] where the off-diagonal function is g(k) = i*eta*[V_a + V_b*exp(i*k*Omega) - V_c*exp(-i*k*Omega) - V_d*exp(2*i*k*Omega)], with k the crystal momentum along the synthetic frequency dimension and Omega the free spectral range. The hopping coefficients are a = i*eta*V_a, b = i*eta*V_b, c = -i*eta*V_c, d = -i*eta*V_d. The constraint a = b* is enforced, all magnitudes are real-valued ratios, and the complex phase of d is theta = arg(d). For the parameter family with a = b*, c/a and d*/a chosen real-valued such that the winding number W = 2 is realized (corresponding to g(k) encircling the origin twice as k sweeps across the Brillouin zone), and then the phase theta = arg(d) is continuously tuned through a topological transition (gap closes and reopens), what is the winding number W in the final phase after the transition? Output a JSON object {\"winding_number\": <integer>}.",
+ "answer": {
+  "winding_number": 1
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "extended SSH chain in synthetic frequency dimension (fiber-loop cavity, EOM drive)",
+  "model_family": "synthetic-frequency-lattice",
+  "quantity_ids": [
+   "winding_number"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "the measured winding number of g(k) changes from W=2 to W=1. These observations demonstrate that pure phase tuning of a long-range hopping can change the topology of a chiral dimer chain",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Phase-only tuning of arg(d) in a third-nearest-neighbor SSH chain implemented in an EOM-driven fiber-loop cavity; winding number change observed via bulk wavefunction tomography.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "78799a136e036f65",
+   "result": "cracked"
+  },
+  "quality_notes": "incomplete question: <missing: c/a,d*/a magnitudes>; fetch from original paper before scored use",
+  "paper_ref": "3274384a91c3",
+  "source_ref": "1b3c3849d435"
+ }
+}

@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-graphene-antidot-e0c1"
+track = "B3"
+split = "validation"
+paper_ref = "a13b3d316763"
+system = "graphene antidot lattice (L=3.0nm, D=1.6nm circular holes), hbar*Omega=0.8eV laser"
+model_family = "graphene-antidot"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["E0c1_au"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.005814
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

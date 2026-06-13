@@ -1,0 +1,40 @@
+{
+ "id": "flq-b2-sq-well-osc-barrier",
+ "track": "B2",
+ "split": "validation",
+ "question": "Consider the one-dimensional quantum particle with time-periodic potential V(x,t) = ∞ for x<0; 0 for 0≤x<a; V₀+V₁cos(ωt) for a≤x≤b; V₀' for x>b, with all lengths and energies in atomic units (ℏ=m_e=e=1). Parameters: a=1 a.u., b=2 a.u., V₀=15 a.u., V₀'=V₀/2=7.5 a.u., V₁=0.2·V₀=3 a.u., drive frequency ω=0.62·V₀=9.3 a.u. Using a two-sideband (N=2) Floquet secular-equation truncation, two metastable Floquet states exist. Report their Floquet quasienergies as DIMENSIONLESS values ε/ω, where the real part is folded into the first Floquet zone (-1/2, 1/2]. Include the imaginary part (Im ε/ω < 0 signals decay). Label them by their relative stability: 'eps_less_stable' for the state with larger |Im ε| (faster decay) and 'eps_more_stable' for the state with smaller |Im ε|. Output a JSON object {\"eps_less_stable_re\": <float>, \"eps_less_stable_im\": <float>, \"eps_more_stable_re\": <float>, \"eps_more_stable_im\": <float>}.",
+ "answer": {
+  "eps_less_stable_re": 0.4059903,
+  "eps_less_stable_im": -0.0080565,
+  "eps_more_stable_re": 0.3666823,
+  "eps_more_stable_im": -0.0023484
+ },
+ "verifier": {
+  "type": "quasienergy_set",
+  "rel_tol": 0.001
+ },
+ "metadata": {
+  "doi": "10.1103/physreva.71.012102",
+  "system": "1D square well with oscillating barrier",
+  "model_family": "square-well",
+  "quantity_ids": [
+   "eps_less_stable_re",
+   "eps_less_stable_im",
+   "eps_more_stable_re",
+   "eps_more_stable_im"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "For the parameter choice a=1, b=2, V₀=15, V₀'=V₀/2 in atomic units, V₁/V₀=0.2, ω/V₀=0.62, two Floquet metastable states were found with quasienergies ε/V₀=0.251714-0.004995i (less stable) and ε/V₀=0.227343-0.001456i (more stable).",
+  "verification_status": "source_verified",
+  "difficulty_note": "Gold values re-expressed as ε/ω from paper-stated ε/V₀; ω=0.62·V₀=9.3 a.u., so ε/ω = (ε/V₀)·(V₀/ω) = (ε/V₀)/0.62.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "cbbe4dffa06a5e05",
+   "result": "survived"
+  },
+  "paper_ref": "d1e3bbff7dbb",
+  "source_ref": "ef8b0f530e0f"
+ }
+}

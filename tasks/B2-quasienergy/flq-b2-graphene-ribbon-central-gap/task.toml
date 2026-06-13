@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-graphene-ribbon-central-gap"
+track = "B2"
+split = "train"
+paper_ref = "6170d6418430"
+system = "Irradiated graphene, circularly polarized light, Floquet zone-center gap"
+model_family = "graphene-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["delta0_over_homega_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"beta": [0.1, 2.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

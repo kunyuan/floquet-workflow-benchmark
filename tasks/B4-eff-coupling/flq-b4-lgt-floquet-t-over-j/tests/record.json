@@ -1,0 +1,41 @@
+{
+ "id": "flq-b4-lgt-floquet-t-over-j",
+ "track": "B4",
+ "split": "train",
+ "question": "Consider two ultracold polar molecules in a double-well potential with resonant dipole-dipole interaction proportional to r^{-3}. A five-interval Floquet pulse sequence (high-frequency limit 1/T >> chi) produces a time-averaged effective two-molecule Hamiltonian with Heisenberg coupling J (from intra-vertex interactions at distance a) and rishon tunneling t (from inter-site interactions at distance b=R*a). From the first-order Magnus expansion, the ratio of these two couplings is\n\n  -t / J = (3/8) * R^{-3}\n\nwhere R = b/a is the dimensionless ratio of link length to vertex spacing.\n\nDeclared symbols:\n  R  — dimensionless lattice geometry ratio b/a, R ∈ [1.0, 3.0]\n\nOutput a JSON object {\"neg_t_over_J_formula\": \"<closed-form expression string>\"} using only the declared symbol R and Python arithmetic (** for powers).",
+ "answer": {
+  "neg_t_over_J_formula": "(3/8)*R**(-3)"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "R": [
+    1.0,
+    3.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2305.06373",
+  "system": "Polar molecules in double-well with Floquet-engineered Heisenberg protection for SU(2) lattice gauge theory",
+  "model_family": "lgt-floquet-dipolar",
+  "quantity_ids": [
+   "neg_t_over_J_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "J_ij = (2/3)*chi(r_ij); t_ij = -(1/4)*chi(r_ij); -t/J = (3/8)*R^{-3}; five-interval Floquet sequence yields time-averaged H_Floquet = (chi/4)*(tunneling) + (2*chi/3)*(Heisenberg spin exchange)",
+  "verification_status": "source_verified",
+  "difficulty_note": "First-order Magnus (time-averaged) expansion of 5-interval Floquet pulse sequence; -t/J = (3/8)*R^{-3} with R=b/a=1.5 gives 0.11111111 = 1/9.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "95279e391a9e9153",
+   "result": "cracked"
+  },
+  "paper_ref": "6f6680b47572",
+  "source_ref": "2c02a9190de8"
+ }
+}

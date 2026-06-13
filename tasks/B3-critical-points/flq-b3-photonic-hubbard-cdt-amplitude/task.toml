@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-photonic-hubbard-cdt-amplitude"
+track = "B3"
+split = "train"
+paper_ref = "026e19884581"
+system = "2D photonic waveguide lattice (Hubbard doublon simulator, kappa=0.04 mm^{-1}, Δβ=-0.18 mm^{-1}, ω=1.57 mm^{-1})"
+model_family = "hubbard-doublon"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["A_CDT_um"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.1
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

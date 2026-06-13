@@ -1,0 +1,33 @@
+{
+ "id": "flq-b1-hofstadter-chern",
+ "track": "B1",
+ "split": "train",
+ "question": "Consider the Harper-Hofstadter (HH) Hamiltonian on a 2D square optical lattice in the Landau gauge with magnetic flux Phi = pi/2 per plaquette: H = -J * sum_{m,n} [ exp(i*n*Phi) * a^dagger_{m+1,n} * a_{m,n} + a^dagger_{m,n+1} * a_{m,n} + h.c. ], where a^dagger_{m,n} and a_{m,n} are creation and annihilation operators at site (m,n), J is the nearest-neighbor tunneling amplitude (isotropic, tuned so J_x^eff = J_y^eff = J), and the flux Phi = pi/2 gives a 4-site magnetic unit cell producing 4 Hofstadter bands. The lowest Hofstadter band E_1 (the one with smallest quasi-momentum energy) is isolated from the others. Sign convention: define nu_1 > 0 when the anomalous transverse drift of the center of mass is in the +x direction for a cloud prepared in the lowest band under a gradient applied in the +y direction (consistent with the experimental convention of the source paper, where a positive transverse shift x(t) > 0 was measured and fitted to yield nu_1 = +1). What is the Chern number nu_1 of the lowest isolated Hofstadter band E_1 at flux Phi = pi/2? Output a JSON object {\"chern_number_lowest_band\": <integer>}.",
+ "answer": {
+  "chern_number_lowest_band": 1
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "Harper-Hofstadter model on optical lattice (flux Phi=pi/2)",
+  "model_family": "graphene-driven",
+  "quantity_ids": [
+   "chern_number_lowest_band"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "the filling-factor combination is gamma_0=eta_1^0-eta_2^0+eta_3^0... the lowest-band Chern number is nu_1... Fitting this equation to the measured differential transverse shift x(t) with the Chern number nu_1 as the only fit parameter... yields the experimentally extracted nu_1 = +1.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Experimentally extracted via anomalous Hall drift of incoherent bosonic cold-atom cloud in a periodically driven optical lattice implementing Phi=pi/2 Hofstadter model; measurement precision limited by inter-band Floquet heating.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "0d9823bf7ab50588",
+   "result": "cracked"
+  },
+  "paper_ref": "3e7e803a42f4",
+  "source_ref": "4d7652984ae5"
+ }
+}

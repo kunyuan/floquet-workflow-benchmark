@@ -1,0 +1,33 @@
+{
+ "id": "flq-b3-random-dimer-dynamical-localization",
+ "track": "B3",
+ "split": "validation",
+ "question": "Consider a one-dimensional random-dimer tight-binding chain with N=1501 sites, nearest-neighbor hopping amplitude R=1, and a dimer detuning epsilon_minus = |epsilon_b - epsilon_a| = R/3. The dimers are distributed randomly along the chain (dimer concentration Q=0.5). An AC electric field E(t) = E1 * cos(omega*t) is applied, giving a gauge-transformed hopping phase exp(i*beta*sin(omega*t)) where beta = e*d*E1/omega (e is carrier charge, d is lattice spacing). Work in the high-frequency regime R/omega = 0.3. Run the full Floquet pipeline at each beta: compute the one-period evolution operator for the driven chain, diagonalize to obtain Floquet states, and compute the mean-square displacement MSD(t) for an initially localized wavepacket C_n(0) = delta_{n,0}. Scan the drive parameter beta from 0 to 4. Locate the FIRST critical value beta_DL at which dynamical localization of the entire chain sets in — that is, the first drive amplitude at which the quasienergy bandwidth collapses and MSD(t) remains bounded for all long times. Output a JSON object {\"beta_DL_first\": <value>}.",
+ "answer": {
+  "beta_DL_first": 2.405
+ },
+ "verifier": {
+  "type": "scalar_tolerance"
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.cond-mat/0603720",
+  "system": "1D random-dimer tight-binding chain (N=1501, R/omega=0.3, epsilon_minus=R/3, Q=0.5)",
+  "model_family": "random-dimer",
+  "quantity_ids": [
+   "beta_DL_first"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "at beta=2.405, which is the first zero of J0, and epsilon_-=R/3, the motion remains bounded. Band collapse induced by the AC field therefore localizes the chain irrespective of weak short-range dimer correlations.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Requires scanning beta = edE1/omega in [0, 4] with R/omega=0.3 fixed; at each beta run full Floquet band calculation for driven 1D random-dimer chain and track quasienergy bandwidth to find first band-collapse point J0(beta)=0.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "83c078aa3c0218da",
+   "result": "cracked"
+  },
+  "paper_ref": "c34814c54727",
+  "source_ref": "abd21b4b191e"
+ }
+}

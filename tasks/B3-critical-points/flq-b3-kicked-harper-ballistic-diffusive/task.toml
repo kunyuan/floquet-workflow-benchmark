@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-kicked-harper-ballistic-diffusive"
+track = "B3"
+split = "validation"
+paper_ref = "795b1a722a16"
+system = "kicked Harper model (V=0.2, J=1, hbar=1/8, M=3 polychromatic drive)"
+model_family = "kicked-harper"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["epsilon_b"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.1
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

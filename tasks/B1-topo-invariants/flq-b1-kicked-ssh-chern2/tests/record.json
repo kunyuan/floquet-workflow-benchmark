@@ -1,0 +1,34 @@
+{
+ "id": "flq-b1-kicked-ssh-chern2",
+ "track": "B1",
+ "split": "train",
+ "question": "Consider the kicked extended SSH model: a one-dimensional chain with momentum-space Hamiltonian H(k) = d_x(k)*sigma_x + d_y(k)*sigma_y + d_z(k)*sigma_z, where d_x(k) = t*(1 + delta*cos(theta)) + t*(1 - delta*cos(theta))*cos(k), d_y(k) = t*(1 - delta*cos(theta))*sin(k), d_z(k) = g + h*cos(theta - phi). Here theta is a synthetic (crystal-angle) parameter, phi is an offset, t is the hopping amplitude, delta parameterizes the dimerization, g and h are on-site potential parameters. The system is periodically kicked in the y-direction: H_kick = alpha_y * sigma_y * sum_m delta(t - m*T), so the one-period Floquet evolution operator is U(k, theta) = exp(-i*alpha_y*sigma_y) * exp(-i*H(k, theta)*T). Using parameters t = 1, delta = 0.5, h = 1, T = 3, alpha_y = 0.8 (with alpha_x = alpha_z = 0), and treating (k, theta) as a 2D synthetic Brillouin zone with phi = 0 and scanning g to find the phase with maximum |C|: what is the maximum magnitude of the stroboscopic Chern number C achievable by this Y-kicking protocol? Output a JSON object {\"max_chern_number_magnitude\": <integer>}.",
+ "answer": {
+  "max_chern_number_magnitude": 2
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "kicked extended SSH chain (synthetic 2D topology via crystal angle)",
+  "model_family": "kicked-ssh",
+  "quantity_ids": [
+   "max_chern_number_magnitude"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "the stroboscopic Chern number C can take values 0,+-1,+-2 over regions of the synthetic Brillouin zone for representative parameters (e.g., t=1, delta=0.5, h=1, T=3, alpha_y=0.5 and alpha_y=0.8",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Numerical phase diagram computation for Y-direction delta-kick of the extended SSH chain with 2D synthetic BZ (k, theta); phase diagram obtained by scanning T and alpha_y.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "b418e5bd8e6ddff4",
+   "result": "survived"
+  },
+  "gold_dispute": "baseline: 4 independent methods (FHS/Berry/solid-angle/winding) all give C=0 for the phi=0 model; solver notes phi=pi/2 (not the question params) gives C=1 — likely question-parameter or gold error, adjudicate against original paper",
+  "paper_ref": "c9283b636c5a",
+  "source_ref": "2f1b154d5039"
+ }
+}

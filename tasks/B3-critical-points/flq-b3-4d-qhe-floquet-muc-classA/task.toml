@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-4d-qhe-floquet-muc-classA"
+track = "B3"
+split = "train"
+paper_ref = "43f69fd7b910"
+system = "4D Dirac-lattice Floquet model, symmetry class A, C=-1 insulator to metal transition"
+model_family = "floquet-4d-dirac"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["mu_c_classA_C-1"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.003561
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

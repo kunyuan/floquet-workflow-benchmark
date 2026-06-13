@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-pxp-ca-vacua"
+track = "B2"
+split = "validation"
+paper_ref = "52871fc0cb64"
+system = "PXP Rydberg chain at integrable Trotter step"
+model_family = "rydberg"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["eps_vacuum_0_formula", "eps_vacuum_plus_formula", "eps_vacuum_minus_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

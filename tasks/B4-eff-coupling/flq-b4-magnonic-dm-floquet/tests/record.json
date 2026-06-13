@@ -1,0 +1,41 @@
+{
+ "id": "flq-b4-magnonic-dm-floquet",
+ "track": "B4",
+ "split": "train",
+ "question": "Consider a two-dimensional honeycomb ferromagnet with nearest-neighbor exchange coupling J, driven by a circularly polarized electric field via the Aharonov-Casher mechanism with dimensionless drive intensity eps_0. In the high-frequency limit, a first-order (1/omega) van Vleck expansion of the Floquet Hamiltonian generates a photo-induced staggered Dzyaloshinskii-Moriya (DM) coupling:\n\n  D_F * omega / J^2 = sqrt(3) * J_1(eps_0)^2\n\nwhere J_1 is the first-order Bessel function of the first kind.\n\nDeclared symbols:\n  eps0  — dimensionless drive amplitude eps_0 = g*mu_B*E_0*a/(hbar*c^2), eps0 ∈ (0, 4.0]\n\nOutput a JSON object {\"D_F_omega_over_J2_formula\": \"<closed-form expression string>\"} using only the declared symbol and functions [sqrt, j1].",
+ "answer": {
+  "D_F_omega_over_J2_formula": "sqrt(3)*j1(eps0)**2"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "eps0": [
+    0.1,
+    4.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.1809.09102",
+  "system": "Honeycomb ferromagnet magnons driven by circularly polarized light (Aharonov-Casher)",
+  "model_family": "magnonic-floquet",
+  "quantity_ids": [
+   "D_F_omega_over_J2_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "D_F = sqrt(3)*J^2*J_1(eps_0)^2/omega; small-drive limit J_1(eps_0)~eps_0/2 gives D_F~(sqrt(3)/2)*J^2*eps_0^2/omega; effective static Hamiltonian: H_q^eff = H_{q,0} - (1/omega)*[H_{q,-1}, H_{q,1}]",
+  "verification_status": "source_verified",
+  "difficulty_note": "First-order van Vleck/Magnus commutator expansion (1/omega term); D_F*omega/J^2 = sqrt(3)*J_1(eps_0)^2 with eps_0=1.0 gives sqrt(3)*J_1(1)^2 = sqrt(3)*0.440051^2 = 0.33540214.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "e6b705f45ee31066",
+   "result": "cracked"
+  },
+  "paper_ref": "c3c087be0391",
+  "source_ref": "9e171cecf36f"
+ }
+}

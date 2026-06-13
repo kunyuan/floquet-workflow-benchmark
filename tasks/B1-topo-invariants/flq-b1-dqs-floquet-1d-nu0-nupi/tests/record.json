@@ -1,0 +1,36 @@
+{
+ "id": "flq-b1-dqs-floquet-1d-nu0-nupi",
+ "track": "B1",
+ "split": "train",
+ "question": "Consider a one-dimensional Floquet topological circuit for digital quantum simulation of spin-orbit coupled lattice physics. A spinful lattice of N sites is encoded in 2N qubits: odd qubit Q_{2x-1} encodes spin-up and even qubit Q_{2x} encodes spin-down at site x. The one-period Floquet evolution operator is U_1 = [tensor over x: U(alpha/2) on (Q_{2x-1},Q_{2x})] * [tensor over x: U(beta) on (Q_{2x},Q_{2x+1})] * [tensor over x: U(alpha/2) on (Q_{2x-1},Q_{2x})], where U(theta) is a composite two-qubit gate implementing SOC hopping via U(theta) = CNOT_{Q_a,Q_b} Z^+_{Q_a} Y^-_{Q_a}(theta) CNOT_{Q_b,Q_a} Y^+_{Q_a}(theta) CNOT_{Q_b,Q_a} Z^-_{Q_a} CNOT_{Q_a,Q_b}, with Y^pm(theta) = exp(mp*i*(theta/2)*sigma_y), Z^pm = exp(mp*i*(3*pi/4)*sigma_z), acting in the single-excitation subspace. The topological invariants (nu_0, nu_pi) are defined as the integer winding numbers nu_epsilon = (i/(4*pi)) * integral_{-pi}^{pi} dk tr(tau_z * U_{1,epsilon}^{-1} * d/dk U_{1,epsilon}) for epsilon in {0, pi}, where U_{1,epsilon}(k) is the periodized Floquet operator in the two-component internal basis and tau_z is the corresponding Pauli z matrix. For circuit parameters alpha = pi and beta = 3*pi/2 (with alpha, beta in (0, 2*pi)), what are the Floquet winding numbers nu_0 and nu_pi? Output a JSON object {\"nu_0\": <integer>, \"nu_pi\": <integer>}.",
+ "answer": {
+  "nu_0": 1,
+  "nu_pi": 1
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "1D digital quantum circuit for Floquet SOC topological phases (IBM/Rigetti quantum processor)",
+  "model_family": "digital-qsim-soc",
+  "quantity_ids": [
+   "nu_0",
+   "nu_pi"
+  ],
+  "gold_provenance": "formula_derived",
+  "source_excerpt": "The circuit supports multiple 2D Floquet topological phases characterized by winding numbers (W_0,W_pi) in {0,1}x{0,1} and hosts edge-state channels even in regimes where the static Chern number vanishes (for example W_0=1,W_pi=1).",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Phase-diagram boundaries from conclusion_5: alpha=beta (nu_0 transition) and alpha+beta=2*pi (nu_pi transition). Pinned point alpha=pi, beta=3*pi/2 lies pi/2 above each boundary. Verification: |lambda_1| = tan(pi/4)*cot(3*pi/8) = sqrt(2)-1 ~ 0.414 < 1 (nu_0=1); |lambda_tilde_2| = cot(pi/4)*cot(3*pi/8) = sqrt(2)-1 ~ 0.414 < 1 (nu_pi=1). The W_0=1,W_pi=1 regime is explicitly cited as example in conclusion_7 of the DQS paper.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "6f57325a77185d44",
+   "result": "survived"
+  },
+  "gold_dispute": "baseline OBC spectrum gives (nu0,nu_pi)=(0,1) with explicit pi-edge-modes vs gold (1,1); QA-6 confirmed gold via boundary formula — genuine method disagreement, adjudicate against original paper",
+  "paper_ref": "5d022da45553",
+  "source_ref": "4da2b9c6abd2"
+ }
+}

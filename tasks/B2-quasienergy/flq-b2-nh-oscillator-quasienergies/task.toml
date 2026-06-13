@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-nh-oscillator-quasienergies"
+track = "B2"
+split = "train"
+paper_ref = "89c4716495c9"
+system = "Non-Hermitian driven damped harmonic oscillator, complex Floquet quasienergy ladder"
+model_family = "non-hermitian-oscillator"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["eps0_over_omega", "eps1_over_omega"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"omega": [0.8, 2.0], "gamma": [0.05, 0.5], "Omega_d": [0.2, 1.0], "f0": [0.2, 1.5]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-photonic-cdt-3d"
+track = "B4"
+split = "validation"
+paper_ref = "2af7aa0e3d49"
+system = "3D optically induced photonic lattice with longitudinal alternating-sublattice drive"
+model_family = "photonic-floquet-cdt"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["C_eff_over_C_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"x": [0.1, 3.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

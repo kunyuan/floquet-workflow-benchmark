@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-sq-well-osc-barrier"
+track = "B2"
+split = "validation"
+paper_ref = "d1e3bbff7dbb"
+system = "1D square well with oscillating barrier"
+model_family = "square-well"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["eps_less_stable_re", "eps_less_stable_im", "eps_more_stable_re", "eps_more_stable_im"]
+
+[verifier]
+type = "quasienergy_set"
+rel_tol = 0.001
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

@@ -1,0 +1,33 @@
+{
+ "id": "flq-b1-fsotsc-mcm",
+ "track": "B1",
+ "split": "validation",
+ "question": "Consider a 2D topological insulator on a square lattice with nearest-neighbor hopping t_x = t_y = 1.0, spin-orbit coupling lambda_x = lambda_y = 1.0, crystal-field splitting m_0 = 2.5, and proximity-induced d-wave superconducting pairing Delta = 0.6 (pairing function Delta(k) = Delta*(cos(k_x) - cos(k_y))). The static Hamiltonian H_0(k) is in the trivial phase since |m_0| = 2.5 > t_x + t_y = 2.0. A periodic mass kick is applied: the mass term (proportional to Gamma_1 = sigma_z * tau_z, where sigma and tau are Pauli matrices for spin and particle-hole degrees of freedom) is kicked as m(t) = m_1 * sum_r delta(t - r*T) with amplitude m_1 = -0.4 and period T = 0.419. No in-plane Zeeman field is applied (B_x = 0). The one-period Floquet evolution operator is U(T) = exp(-i*m_1*Gamma_1) * exp(-i*H_0(k)*T). Under open boundary conditions on a square sample, this driving generates a Floquet second-order topological superconducting (FSOTSC) phase. How many zero-energy Majorana corner modes (MCMs) appear in total at the four corners of the square sample? Output a JSON object {\"majorana_corner_modes_total\": <integer>}.",
+ "answer": {
+  "majorana_corner_modes_total": 8
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": "10.1103/PhysRevB.103.085413",
+  "system": "2D TI + d-wave SC with periodic mass kick (FSOTSC)",
+  "model_family": "sotsc",
+  "quantity_ids": [
+   "majorana_corner_modes_total"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "This weak FSOTSC phase hosts eight Majorana corner modes (MCMs) at the four corners of a square sample, with two zero-energy Majoranas per corner.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Periodic delta-kick of mass term in a trivial 2D TI proximitized to d-wave SC; weak FSOTSC phase has 2 MCMs per corner (8 total) protected by C4 symmetry; computed via LDOS of exact Floquet operator.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "ec5fddf52d3fca12",
+   "result": "survived"
+  },
+  "paper_ref": "7e569501d541",
+  "source_ref": "8924c2c3371a"
+ }
+}

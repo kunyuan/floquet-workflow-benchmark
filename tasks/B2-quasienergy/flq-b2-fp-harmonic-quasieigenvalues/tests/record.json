@@ -1,0 +1,47 @@
+{
+ "id": "flq-b2-fp-harmonic-quasieigenvalues",
+ "track": "B2",
+ "split": "validation",
+ "question": "Consider a driven harmonic oscillator with Langevin equation: x_dot = v, v_dot = -gamma*v - omega^2*x + A*sin(omega_0*t + phi) + xi(t), with Gaussian white noise. Parameters: gamma (friction), omega (oscillator frequency), overdamped regime gamma > 2*omega. After introducing a phase variable and applying a periodic coordinate shift, the Fokker-Planck operator separates. Its Floquet quasi-eigenvalue spectrum has the ladder form mu_lmn = i*l*omega_0 + Lambda_mn, where Lambda_mn (non-negative integers m, n; Lambda_00 = 0 is the stationary mode) is built from the two fundamental relaxation rates of the deterministic damped oscillator. Derive closed forms for the two fundamental rates: Lambda_10 (m=1, n=0, the fast rate) and Lambda_01 (m=0, n=1, the slow rate).\n\nDeclared symbols:\n  gamma  — friction coefficient (>0), overdamped: gamma^2 > 4*omega^2, gamma ∈ [2.5, 5]\n  omega  — oscillator frequency (>0), omega ∈ [0.5, 1.2], with gamma^2/4 > omega^2\n\nOutput a JSON object {\"Lambda_10_formula\": \"<expr for m=1,n=0>\", \"Lambda_01_formula\": \"<expr for m=0,n=1>\"} using only the declared symbols and functions [sqrt].",
+ "answer": {
+  "Lambda_10_formula": "(gamma/2)*(1 + sqrt(1 - 4*omega**2/gamma**2))",
+  "Lambda_01_formula": "(gamma/2)*(1 - sqrt(1 - 4*omega**2/gamma**2))"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "gamma": [
+    2.5,
+    5.0
+   ],
+   "omega": [
+    0.5,
+    1.2
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/physreva.41.2977",
+  "system": "Driven harmonic oscillator Fokker-Planck, overdamped Kramers relaxation eigenvalues",
+  "model_family": "stochastic-floquet",
+  "quantity_ids": [
+   "Lambda_10_formula",
+   "Lambda_01_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "Lambda_mn = (gamma/2)[1+sqrt(1-4omega^2/gamma^2)]m + (gamma/2)[1-sqrt(1-4omega^2/gamma^2)]n, l in Z, m,n in N_0",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula: Lambda_mn = (gamma/2)*(1+sqrt(1-4*omega^2/gamma^2))*m + (gamma/2)*(1-sqrt(1-4*omega^2/gamma^2))*n. Params: gamma=3, omega=1. disc=1-4/9=5/9, sqrt=sqrt(5)/3. Lambda_10=(3+sqrt(5))/2=2.618033988749895; Lambda_01=(3-sqrt(5))/2=0.381966011250105. Verification: L10+L01=3.0=gamma; L10*L01=1.0000000000=omega^2.",
+  "quality_notes": "restored 2026-06-13: track contract is workflow-uniform (owner principle), Floquet-spectral quantities of any output type admitted; converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "01759cb0e914d0d1",
+   "result": "cracked"
+  },
+  "paper_ref": "36e5c6c72164",
+  "source_ref": "68dac30f559f"
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "flq-b4-raman-soc-renorm",
+ "track": "B4",
+ "split": "validation",
+ "question": "Consider a three-level spin-orbit coupled Fermi gas (e.g., 40K) with three selected hyperfine spin states |1>, |2>, |3> coupled by two-photon Raman processes. Two of the detunings are sinusoidally modulated with amplitude delta_m, frequency omega, and relative initial phase phi_0 = pi. In the high-frequency limit omega >> other energy scales, the first-order Magnus (time-averaging) expansion yields Bessel-renormalized Raman coupling strengths:\n\n  Omega_12' / Omega_12 = J_0(delta_m/omega)\n  Omega_23' / Omega_23 = J_0(2*delta_m*sin(phi_0/2)/omega)  [sin(pi/2) = 1]\n\nDeclared symbols:\n  x  — dimensionless modulation ratio delta_m/omega, x ∈ (0, 3.5]\n\nOutput a JSON object {\"Omega12_eff_over_Omega12_formula\": \"<expr>\", \"Omega23_eff_over_Omega23_formula\": \"<expr>\"} using only the declared symbol and functions [j0].",
+ "answer": {
+  "Omega12_eff_over_Omega12_formula": "j0(x)",
+  "Omega23_eff_over_Omega23_formula": "j0(2*x)"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "x": [
+    0.1,
+    3.5
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.1704.00132",
+  "system": "Three-level Raman-coupled SOC ultracold Fermi gas with periodically modulated detunings",
+  "model_family": "ultracold-soc-floquet",
+  "quantity_ids": [
+   "Omega12_eff_over_Omega12_formula",
+   "Omega23_eff_over_Omega23_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "Omega_12' = Omega_12 J_0(delta_m/omega); Omega_13' = Omega_13 J_0(delta_m/omega); Omega_23' = Omega_23 J_0(2*delta_m*sin(phi0/2)/omega); sign of product eta=Omega12'*Omega13'*Omega23' determines Dirac point location",
+  "verification_status": "source_verified",
+  "difficulty_note": "High-frequency Floquet averaging (Magnus expansion first order) for three-level Raman system; Omega12_eff/Omega12 = J_0(1.5)=0.51182767; Omega23_eff/Omega23 = J_0(3.0)=-0.26005195 (phi_0=pi).",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "65c6af55757633a7",
+   "result": "cracked"
+  },
+  "paper_ref": "3252011272db",
+  "source_ref": "c487841ed900"
+ }
+}

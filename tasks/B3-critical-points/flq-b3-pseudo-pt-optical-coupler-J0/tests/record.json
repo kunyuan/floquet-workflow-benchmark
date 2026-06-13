@@ -1,0 +1,34 @@
+{
+ "id": "flq-b3-pseudo-pt-optical-coupler-J0",
+ "track": "B3",
+ "split": "validation",
+ "question": "Consider a two-channel optical coupler described by the coupled-mode equations i*d/dz [c1; c2] = [[+i*gamma/2, v*exp(i*S(z))]; [v*exp(-i*S(z)), -i*gamma/2]] [c1; c2], with static interchannel coupling v, balanced gain/loss gamma, and biharmonic longitudinal modulation S(z) = -A * [sin(omega*z) + f*sin(2*omega*z + phi)], where A is the modulation amplitude, omega is the modulation frequency, f is the second-harmonic weight, and phi is the relative phase. Set f=1/4 and phi=pi/2. In the high-frequency regime (v << omega), obtain the effective static coupling J by Floquet-averaging one period of the modulation. The spontaneous PT-symmetry breaking threshold is gamma_critical = 2*|J|. Scan A/omega from 0 to 3 and locate the FIRST critical modulation amplitude (A/omega)_c1 at which the effective coupling |J| vanishes, causing the PT-breaking threshold to go to zero. This corresponds to the first drive amplitude at which Floquet averaging produces complete suppression of interchannel coupling. Output a JSON object {\"A_over_omega_c1\": <value>}.",
+ "answer": {
+  "A_over_omega_c1": 2.4
+ },
+ "verifier": {
+  "type": "scalar_tolerance",
+  "rel_tol": 0.052083
+ },
+ "metadata": {
+  "doi": "10.1103/physrevlett.110.243902",
+  "system": "two-channel biharmonically modulated optical coupler (f=1/4, phi=pi/2, balanced gain/loss)",
+  "model_family": "pt-optical-coupler",
+  "quantity_ids": [
+   "A_over_omega_c1"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "For the concrete parameter choice f = 1/4, the Bessel-series evaluation of J yields values of A/omega near 2.4 and 5.52 with phi = pi/2 for which the numerical sum F(A/omega) vanishes (within numerical resolution), so that J = v F(A/omega) = 0",
+  "verification_status": "source_verified",
+  "difficulty_note": "Requires scanning A/omega in [0, 3], computing the infinite Bessel series J for each value at fixed f=1/4, phi=pi/2, and finding the first zero of |J|; the full Floquet pipeline must run the coupled-mode propagator to verify quasienergy gap closure.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "10f35ba68d546f7c",
+   "result": "cracked"
+  },
+  "paper_ref": "16e5edcab866",
+  "source_ref": "81934acb4b2e"
+ }
+}

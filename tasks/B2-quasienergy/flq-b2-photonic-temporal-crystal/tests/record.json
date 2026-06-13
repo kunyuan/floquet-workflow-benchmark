@@ -1,0 +1,49 @@
+{
+ "id": "flq-b2-photonic-temporal-crystal",
+ "track": "B2",
+ "split": "train",
+ "question": "A spatially-homogeneous photonic temporal crystal has a square-wave relative permittivity: epsilon(t) = epsilon_1 for 0 < t < T_1, and epsilon(t) = epsilon_2 for T_1 < t < T_2 (T_2=T-T_1), with period T and speed of light c. For wavenumber k, define the phase advances in the two half-periods phi1 = k*c*T_1/sqrt(epsilon_1) and phi2 = k*c*T_2/sqrt(epsilon_2), and the impedance ratio r_imp = sqrt(epsilon_2/epsilon_1). Work in the elliptic (stable band) regime, where the magnitude of the one-period monodromy trace is below 2. Using the transfer-matrix (monodromy) method for piecewise-constant media, derive the dimensionless quasi-frequency phase per period Omega_k*T of the Floquet (Bloch-in-time) modes, taking the principal value in [0, pi].\n\nDeclared symbols:\n  phi1  — phase advance in medium 1, phi1 ∈ (0, 1.0] rad\n  phi2  — phase advance in medium 2, phi2 ∈ (0, 0.6] rad\n  r_imp — impedance ratio sqrt(epsilon_2/epsilon_1), r_imp ∈ [1.2, 3.5]\n\nOutput a JSON object {\"Omega_k_T_formula\": \"<closed-form expression string>\"} using only the declared symbols and the functions [cos, sin, arccos, sqrt].",
+ "answer": {
+  "Omega_k_T_formula": "arccos(cos(phi1)*cos(phi2) - 0.5*(1/r_imp + r_imp)*sin(phi1)*sin(phi2))"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "phi1": [
+    0.1,
+    1.0
+   ],
+   "phi2": [
+    0.05,
+    0.55
+   ],
+   "r_imp": [
+    1.2,
+    3.5
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2511.17317",
+  "system": "Photonic temporal crystal with square-wave permittivity modulation",
+  "model_family": "photonic-temporal-crystal",
+  "quantity_ids": [
+   "Omega_k_T_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "tau_k = cos(k c T_1/sqrt(eps_1)) cos(k c T_2/sqrt(eps_2)) - (1/2) sin(k c T_1/sqrt(eps_1)) sin(k c T_2/sqrt(eps_2)) (sqrt(eps_1/eps_2)+sqrt(eps_2/eps_1))",
+  "verification_status": "source_verified",
+  "difficulty_note": "params eps1=1, eps2=4, T=1, T1=T2=0.5, c=1, k=1. phi1=k*c*T1/sqrt(eps1)=0.5 rad, phi2=k*c*T2/sqrt(eps2)=0.25 rad. sqrt(eps1/eps2)+sqrt(eps2/eps1)=0.5+2.0=2.5. tau_k=cos(0.5)*cos(0.25)-0.5*sin(0.5)*sin(0.25)*2.5=0.702035924769218. |tau_k|<1 -> elliptic. Omega_k*T=arccos(tau_k)=0.792543966983499 rad (dimensionless). Omega_k/omega_drive=Omega_k*T/(2*pi)=0.126137289963084.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "6d1a5d2fa120360b",
+   "result": "cracked"
+  },
+  "paper_ref": "42dc4ff8690c",
+  "source_ref": "595cfc53ea06"
+ }
+}

@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-driven-oscillator-qe"
+track = "B2"
+split = "train"
+paper_ref = "1291a63b0e8b"
+system = "driven harmonic oscillator"
+model_family = "oscillator"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["eps_folded_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"omega0": [0.8, 1.5], "omega_d": [0.05, 0.4], "r0": [1.0, 3.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

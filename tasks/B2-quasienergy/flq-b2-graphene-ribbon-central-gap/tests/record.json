@@ -1,0 +1,41 @@
+{
+ "id": "flq-b2-graphene-ribbon-central-gap",
+ "track": "B2",
+ "split": "train",
+ "question": "A spatially-homogeneous graphene sheet is irradiated by a monochromatic circularly polarized electromagnetic field. In the low-energy Dirac continuum model with Fermi velocity v, the irradiation is parameterized by the dimensionless driving strength beta = e*v*A_0 / (hbar*omega), where A_0 is the vector-potential amplitude, omega is the angular frequency, and e is the elementary charge. The Floquet quasi-energy spectrum develops a photo-induced gap at the Floquet zone center (quasi-energy epsilon = 0), denoted Delta_0. Use the generalized rotating-wave approximation (valid for weak to moderate driving, beta in (0, 2]) to derive the closed-form dimensionless central-gap expression Delta_0 / (hbar*omega) as a function of beta.\n\nDeclared symbols:\n  beta  — dimensionless driving strength e*v*A_0/(hbar*omega), beta ∈ (0, 2]\n\nOutput a JSON object {\"delta0_over_homega_formula\": \"<closed-form expression string>\"} using only the declared symbol and functions [sqrt].",
+ "answer": {
+  "delta0_over_homega_formula": "sqrt(1 + 4*beta**2) - 1"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "beta": [
+    0.1,
+    2.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.1709.00090",
+  "system": "Irradiated graphene, circularly polarized light, Floquet zone-center gap",
+  "model_family": "graphene-floquet",
+  "quantity_ids": [
+   "delta0_over_homega_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "Delta_0/(hbar*omega) = sqrt(1+4*beta^2) - 1, where beta = e*v*A_0/(hbar*omega).",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula (conclusion_2, confirmed in conclusion_8): Delta_0/(hbar*omega) = sqrt(1+4*beta^2) - 1. Parameter: beta = 0.5. Evaluation: sqrt(1+4*(0.5)^2) - 1 = sqrt(1+1) - 1 = sqrt(2) - 1 = 0.414213562373. Exact closed form: sqrt(2) - 1. Validity: generalized rotating-wave approximation, weak-to-moderate driving.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "2dcdc2b1bbe6b4f9",
+   "result": "cracked"
+  },
+  "paper_ref": "6170d6418430",
+  "source_ref": "ee4a6cfd2df8"
+ }
+}

@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-kagome-magnon"
+track = "B1"
+split = "train"
+paper_ref = "c2f364bb3f09"
+system = "driven kagome ferromagnet (Cu(1,3-bdc) material) magnon bands"
+model_family = "magnon-honeycomb"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["chern_lower", "chern_middle", "chern_upper"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

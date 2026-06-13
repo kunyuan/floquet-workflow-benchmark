@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-kicked-rotor-dirac"
+track = "B1"
+split = "train"
+paper_ref = "8179bce8e438"
+system = "periodically kicked rigid rotor (N=3 quantum resonance, P=2.5)"
+model_family = "kicked-rotor"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["edge_state_count"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

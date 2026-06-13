@@ -1,0 +1,33 @@
+{
+ "id": "flq-b1-afti-photonic",
+ "track": "B1",
+ "split": "validation",
+ "question": "Consider a two-dimensional photonic bipartite square lattice driven periodically along the propagation direction z with total driving period T = 40 mm and lattice site spacing a = 40 um. The Bloch Hamiltonian in momentum space is H_B(k, z) = -sum_{j=1}^{4} [[0, c_j(z)*exp(i*b_j.k)], [c_j(z)*exp(-i*b_j.k), 0]], where the four bond vectors are b_1 = (a, 0), b_2 = (-a, 0), b_3 = (0, a), b_4 = (0, -a), and the piecewise coupling coefficients c_j(z) implement four sequential coupling steps of equal length T/4 within each period. In the perfect-coupling limit, each step j provides coupling amplitude c = 2*pi/T (full hopping) along bond direction j only. The stroboscopic Floquet quasi-energy spectrum for this system at perfect coupling c = 2*pi/T produces a single flat bulk quasi-energy band at epsilon = 0. What is the bulk Chern number C of this flat quasi-energy band? Output a JSON object {\"chern_number\": <integer>}.",
+ "answer": {
+  "chern_number": 0
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": "10.1038/ncomms13756",
+  "system": "anomalous Floquet topological insulator (2D photonic waveguide lattice)",
+  "model_family": "waveguide-array",
+  "quantity_ids": [
+   "chern_number"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "a single degenerate dispersionless bulk quasi-energy band whose bulk modes are spatially localized loop states and whose net Chern number for that band is C=0.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Four-step sequential Floquet protocol on femtosecond-laser-written waveguides; anomalous Floquet phase where C=0 yet chiral edge modes exist (winding number W=1).",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "9557f5a4497e018f",
+   "result": "survived"
+  },
+  "paper_ref": "36903ee4accc",
+  "source_ref": "e07b1fa15871"
+ }
+}

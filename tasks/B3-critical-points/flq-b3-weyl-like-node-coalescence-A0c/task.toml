@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-weyl-like-node-coalescence-A0c"
+track = "B3"
+split = "train"
+paper_ref = "d8aa4d3c5c0d"
+system = "Floquet Weyl-like stacked Chern insulator (m_z=0.5 eV, m_0=1 eV, V_z=1 eV, a=1 nm)"
+model_family = "floquet-weyl-stacked-chern"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["A0c_inv_nm"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.001209
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

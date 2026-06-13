@@ -1,0 +1,34 @@
+{
+ "id": "flq-b3-weyl-like-node-coalescence-A0c",
+ "track": "B3",
+ "split": "train",
+ "question": "Consider a stack of two-band two-dimensional Chern insulators with a spatially periodic on-site potential V(z) = V_z cos(Q_z z) along the stacking direction z (Q_z = 2pi/lambda_z). The static layer Hamiltonian density is H(k_x, k_y, z) = [m_z + V_z cos(Q_z z)] sigma_z + m_0 [2 - cos(k_x a) - cos(k_y a)] sigma_z + t_x sin(k_x a) sigma_x + t_y sin(k_y a) sigma_y, with parameters m_z = 0.5 eV, m_0 = 1 eV, V_z = 1 eV, t_x = t_y = t_0 = 1 eV, a = 1 nm, and modulation period lambda_z = 31a. A linearly polarized time-periodic electric field of frequency omega and amplitude E_0 is additionally applied (dimensionless drive amplitude A_0 = e E_0 / (hbar omega), units nm^{-1}). In the high-frequency Floquet limit, the electric field renormalizes the effective layer mass. Floquet Weyl-like nodes (gap closings at k_x = k_y = 0) exist for small A_0; as A_0 increases the two nodes approach each other. Scan A_0 from 0 to 1.5 nm^{-1}. Locate the critical drive amplitude A_0_c at which the two Floquet Weyl-like nodes coalesce and annihilate — the transition from the Weyl-like phase to a fully gapped phase — identified by the merging of the two gap-closing momenta along the stacking direction into a single point and the simultaneous opening of a gap. Report the result to four significant figures. Output a JSON object {\"A0c_inv_nm\": <value>}.",
+ "answer": {
+  "A0c_inv_nm": 1.034
+ },
+ "verifier": {
+  "type": "scalar_tolerance",
+  "rel_tol": 0.001209
+ },
+ "metadata": {
+  "doi": "10.48550/arxiv.2412.04352",
+  "system": "Floquet Weyl-like stacked Chern insulator (m_z=0.5 eV, m_0=1 eV, V_z=1 eV, a=1 nm)",
+  "model_family": "floquet-weyl-stacked-chern",
+  "quantity_ids": [
+   "A0c_inv_nm"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "the two nodes approach and coalesce into a single node at a threshold approximately A_0~1.034 nm^{-1}, signaling a Floquet-driven topological transition (node annihilation/merging).",
+  "verification_status": "source_verified",
+  "difficulty_note": "Requires scanning A_0 in the Floquet effective mass expression m_tilde_z(A_0) = m_z + 2*m_0*(1 - J_0(A_0*a)) and finding the first upper zero-crossing of the node-existence condition |m_tilde_z/V_z| = 1.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "9b8c2b0fc2e5b66d",
+   "result": "survived"
+  },
+  "paper_ref": "d8aa4d3c5c0d",
+  "source_ref": "cc2f091f26ba"
+ }
+}

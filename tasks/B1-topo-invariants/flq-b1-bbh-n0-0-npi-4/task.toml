@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-bbh-n0-0-npi-4"
+track = "B1"
+split = "train"
+paper_ref = "1f059eb884ad"
+system = "driven extended BBH square lattice (2D higher-order Floquet)"
+model_family = "bbh-lattice"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["N_0", "N_pi", "V_R", "corner_states_pi_gap"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

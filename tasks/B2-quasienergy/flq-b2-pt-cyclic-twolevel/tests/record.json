@@ -1,0 +1,50 @@
+{
+ "id": "flq-b2-pt-cyclic-twolevel",
+ "track": "B2",
+ "split": "train",
+ "question": "Consider the 2x2 PT-symmetric Hamiltonian H(k) = [[i*lam, R0*exp(i*k)], [R0*exp(-i*k), -i*lam]] driven by the cyclic parameter k = omega*t, where R0 > 0 is real, omega > 0 is the drive frequency, and lam is a real damping parameter with 0 < lam < R0 (PT-unbroken regime). The exact Floquet quasienergies mu_+/- are the eigenvalues of the one-period evolution operator U(T) = T-exp(-i * integral_0^{2*pi/omega} H(omega*t) dt). Derive the closed-form expressions for mu_+/omega and mu_-/omega as complex-valued functions of R0, omega, and lam (both real and imaginary parts are nonzero in general). Express the results directly from the analytic eigenvalue formula (no folding required).\n\nDeclared symbols:\n  R0    — real off-diagonal coupling amplitude, R0 ∈ [0.5, 2.0]\n  omega — drive frequency (angular), omega ∈ [0.5, 2.0]\n  lam   — PT gain/loss parameter, lam ∈ [0.1, 1.0] (PT-unbroken: lam < R0)\n\nOutput a JSON object {\"mu_plus_over_omega\": \"<complex expression>\", \"mu_minus_over_omega\": \"<complex expression>\"} using only the declared symbols and functions [sqrt], with literal 1j for the imaginary unit.",
+ "answer": {
+  "mu_plus_over_omega": "(sqrt(R0**2 + (omega/2 + 1j*lam)**2) - omega/2) / omega",
+  "mu_minus_over_omega": "(-sqrt(R0**2 + (omega/2 + 1j*lam)**2) + omega/2) / omega"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "R0": [
+    0.5,
+    2.0
+   ],
+   "omega": [
+    0.5,
+    2.0
+   ],
+   "lam": [
+    0.1,
+    1.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.2302.02114",
+  "system": "PT-symmetric cyclically driven two-level system",
+  "model_family": "pt-symmetric",
+  "quantity_ids": [
+   "mu_plus_over_omega",
+   "mu_minus_over_omega"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "mu_{pm} = pm sqrt(R0^2 + (omega/2 + i*lambda)^2) -/+ omega/2. PT-unbroken regime lambda < R0 = lambda_c.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Exact formula from Eq.(27): mu_pm = +/-sqrt(R0^2+(omega/2+i*lambda)^2) -/+ omega/2. Params R0=2, omega=1, lambda=0.5 (PT-unbroken, lambda<R0). inner = 4 + (0.5+0.5i)^2 = 4+0.5i. sqrt(4+0.5i) = 2.003887331432243+0.124757513098961i. mu_+/omega unfolded = 1.503887331432243+0.124757513098961i; folded re = -0.496112668567757. mu_-/omega unfolded = -2.503887331432243+-0.124757513098961i; folded re = 0.496112668567757.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "6e3da0260c67cd57",
+   "result": "cracked"
+  },
+  "paper_ref": "3aad4c898ce6",
+  "source_ref": "d3f38bc12be8"
+ }
+}

@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-fp-harmonic-quasieigenvalues"
+track = "B2"
+split = "validation"
+paper_ref = "36e5c6c72164"
+system = "Driven harmonic oscillator Fokker-Planck, overdamped Kramers relaxation eigenvalues"
+model_family = "stochastic-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["Lambda_10_formula", "Lambda_01_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"gamma": [2.5, 5.0], "omega": [0.5, 1.2]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

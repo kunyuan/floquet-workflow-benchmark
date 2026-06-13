@@ -1,0 +1,34 @@
+{
+ "id": "flq-b1-tbg-circpol-W-spectral",
+ "track": "B1",
+ "split": "validation",
+ "question": "Consider the continuum model of twisted bilayer graphene (TBG) under off-resonant circularly polarized light. The static TBG Hamiltonian H is the continuum model with two rotated monolayer graphene Dirac Hamiltonians (intralayer hopping tau = 2.73 eV, graphene lattice constant a = 1.42 angstrom) coupled by interlayer moire tunneling with AB coupling w_1 = 110 meV and relaxation ratio w_0/w_1 = 0.8. The drive is circularly polarized light with photon energy hbar*Omega = 3 eV and photoinduced gap parameter P = (3*tau*e*a*E)^2 / (2*hbar^3*Omega^3) = 10 meV (where E is the peak electric field). In the off-resonant high-frequency limit (hbar*Omega >> P, hbar*Omega > hbar*Omega* ~ 1.2 eV), the leading effect of the drive on each graphene layer is an effective Haldane mass term eta*P*sigma_z added to the single-layer Dirac Hamiltonians near the K (eta=+1) and K-prime (eta=-1) valleys, where sigma_z is the sublattice Pauli matrix. For twist angle theta = 1.2 degrees, which satisfies theta > theta* ~ 1 degree (the threshold above which the driven low-energy bands become topological), the W_epsilon^3 spectral winding invariant is defined as the integer that counts the net number of chiral edge states at quasienergy epsilon for a single spin and valley. The invariant in the epsilon = 0 gap is computed per spin and valley from the Floquet Hamiltonian spectrum. Sign convention: W_spectral is defined with the same orientation as in the paper, where right-circular polarization (electric field rotating counter-clockwise in the xy-plane when viewed along +z, i.e., sigma^+ helicity) is applied; the invariant counts chiral edge modes with the convention that a right-mover edge mode at the top edge contributes +1. What is the value of the W_{epsilon=0}^3 spectral winding invariant per single spin and valley for these parameters (theta = 1.2 degrees, P = 10 meV, hbar*Omega = 3 eV, w_0/w_1 = 0.8), which lies in the topological phase region with theta > theta* and P below the critical value at which the gap Delta to remote bands closes? Output a JSON object {\"W_spectral\": <integer>}.",
+ "answer": {
+  "W_spectral": -1
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "twisted bilayer graphene (TBG) under off-resonant circularly polarized light",
+  "model_family": "tbg-floquet",
+  "quantity_ids": [
+   "W_spectral"
+  ],
+  "gold_provenance": "formula_derived",
+  "source_excerpt": "the W_epsilon^3 spectral winding invariant in the epsilon=0 gap takes the value W_{epsilon=0}^3=-1 for a single spin and valley in the high-frequency limit. For twist angles theta >= theta*~1 degree and weak drive P below the critical P at which the gap Delta to remote bands closes",
+  "verification_status": "needs_original_paper",
+  "difficulty_note": "Phase-diagram region: theta >= theta*~1 degree (boundary) and P below critical P (no closed-form formula, but validation point theta=1.2 deg, P=10 meV explicitly used in paper as Berry-curvature check). Pinned point theta=1.2 deg is 0.2 deg above the threshold; P=10 meV << 33 meV used in main results, well inside the topological region. W_spectral=-1 stated explicitly for high-frequency limit per spin/valley.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "f70b95091600e8d3",
+   "result": "survived"
+  },
+  "gold_dispute": "three independent solvers (2 probes + baseline) get W=+1 vs gold -1; sign-convention of spectral winding under right-CP — adjudicate against original paper",
+  "paper_ref": "c59fc2d257a3",
+  "source_ref": "f4eabaf26003"
+ }
+}

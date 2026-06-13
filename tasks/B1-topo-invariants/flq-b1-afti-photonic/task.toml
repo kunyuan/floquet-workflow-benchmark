@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-afti-photonic"
+track = "B1"
+split = "validation"
+paper_ref = "36903ee4accc"
+system = "anomalous Floquet topological insulator (2D photonic waveguide lattice)"
+model_family = "waveguide-array"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["chern_number"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

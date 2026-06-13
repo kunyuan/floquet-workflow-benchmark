@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b4-lgt-floquet-t-over-j"
+track = "B4"
+split = "train"
+paper_ref = "6f6680b47572"
+system = "Polar molecules in double-well with Floquet-engineered Heisenberg protection for SU(2) lattice gauge theory"
+model_family = "lgt-floquet-dipolar"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["neg_t_over_J_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"R": [1.0, 3.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

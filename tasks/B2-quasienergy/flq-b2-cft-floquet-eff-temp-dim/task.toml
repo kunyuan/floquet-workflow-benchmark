@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-cft-floquet-eff-temp-dim"
+track = "B2"
+split = "train"
+paper_ref = "0751ca0b1cf8"
+system = "2D CFT heavy-state Floquet dynamics, effective temperature and primary dimension from Hill-equation exponent"
+model_family = "cft-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["T_eff_formula", "H_eff_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"alpha": [0.1, 3.0], "c": [12.0, 48.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

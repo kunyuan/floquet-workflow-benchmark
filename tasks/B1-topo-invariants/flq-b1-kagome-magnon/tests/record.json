@@ -1,0 +1,37 @@
+{
+ "id": "flq-b1-kagome-magnon",
+ "track": "B1",
+ "split": "train",
+ "question": "Consider a periodically driven kagome ferromagnet with Heisenberg exchange J, out-of-plane Dzyaloshinskii-Moriya interaction D (with D/J = 0.15), and spin magnitude S. In the off-resonant regime (drive frequency omega >> magnon bandwidth Delta), a circularly polarized vector potential A(tau) = [A_x*sin(omega*tau), A_y*sin(omega*tau + phi), 0] drives the system via minimal coupling (Peierls substitution on magnon hoppings). In the off-resonant regime, the drive renormalizes the three bond-direction hopping amplitudes via Peierls substitution. For the undriven system (A_x = A_y = 0), the three magnon bands carry Chern numbers (-1, 0, +1) for the lower, middle, and upper bands respectively. Under circularly polarized driving with phi = pi/2 and A_x = A_y, choose the drive amplitude A_x at which the hopping along the BC bond changes sign (the drive amplitude at which the Floquet-renormalized BC hopping passes through zero under the circularly polarized field). At this amplitude, what are the Chern numbers (C_lower, C_middle, C_upper) of the three magnon bands in the new phase? Output a JSON object {\"chern_lower\": <integer>, \"chern_middle\": <integer>, \"chern_upper\": <integer>}.",
+ "answer": {
+  "chern_lower": 1,
+  "chern_middle": 0,
+  "chern_upper": -1
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "driven kagome ferromagnet (Cu(1,3-bdc) material) magnon bands",
+  "model_family": "magnon-honeycomb",
+  "quantity_ids": [
+   "chern_lower",
+   "chern_middle",
+   "chern_upper"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "the system from one topological magnon insulator phase with Chern numbers (-1,0,+1) for the three bands (lower, middle, upper) to another topological magnon insulator phase with Chern numbers (+1,0,-1).",
+  "verification_status": "source_verified",
+  "difficulty_note": "Off-resonant Floquet drive on kagome magnon Hamiltonian with DM interaction D/J=0.15; Bessel-function renormalized hopping changes sign, flipping all magnon band Chern numbers.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "2e34a1ab3112659d",
+   "result": "cracked"
+  },
+  "paper_ref": "c2f364bb3f09",
+  "source_ref": "809383b72155"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "id": "flq-b2-driven-oscillator-qe",
+ "track": "B2",
+ "split": "train",
+ "question": "Consider the periodically driven harmonic oscillator with Hamiltonian H(t) = hbar*omega0*(a_dag*a + 1/2) - hbar*r0*cos(omega_d*t)*(a + a_dag), where omega0 > 0 is the natural frequency, omega_d > 0 is the drive frequency (omega_d != omega0), r0 > 0 is the dimensionless drive amplitude, and a, a_dag are bosonic ladder operators ([a, a_dag] = 1). The exact Floquet quasienergies form a harmonic ladder eps_n (n = 0, 1, 2, ...). The level is fixed at n = 3. Report the dimensionless quasienergy eps_folded = eps_3/omega_d folded into the first Floquet zone (-1/2, 1/2] using the fold() function (fold(x) = x - floor(x + 0.5)).\n\nDeclared symbols:\n  omega0  — natural frequency (>0), omega0 ∈ [0.8, 1.5]\n  omega_d — drive frequency (>0, omega_d ≠ omega0), omega_d ∈ [0.05, 0.4]\n  r0      — dimensionless drive amplitude (>0), r0 ∈ [1.0, 3.0]\n\nOutput a JSON object {\"eps_folded_formula\": \"<closed-form expression string>\"} using only the declared symbols and functions [fold, floor].",
+ "answer": {
+  "eps_folded_formula": "fold((3 + 0.5)*omega0/omega_d - r0**2*omega0/(2*(omega0**2 - omega_d**2)*omega_d))"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "omega0": [
+    0.8,
+    1.5
+   ],
+   "omega_d": [
+    0.05,
+    0.4
+   ],
+   "r0": [
+    1.0,
+    3.0
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/physreva.66.053402",
+  "system": "driven harmonic oscillator",
+  "model_family": "oscillator",
+  "quantity_ids": [
+   "eps_folded_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "μₙ = (n + ½(1 + r₀²/(ω²-ω₀²)))·ω₀; for m=3, k=0, ω₀=1.0, ω=0.1, r₀=2.312 confirming the n=3 photon quasienergy condition μ₃-ω₀(k+½)=3ω.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula-derived: μₙ = (n + ½(1 + r₀²/(ω²-ω₀²)))·ω₀ with r₀=2.312, ω=0.1, ω₀=1.0; δ=r₀²/(ω²-ω₀²)=5.345344/(-0.99)=-5.399337; μ₀=-2.199669; folded ε/ω = (-21.9967) mod 1 mapped to (-½,½] = 0.003313.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "4a6414f02fa8a1ca",
+   "result": "cracked"
+  },
+  "paper_ref": "1291a63b0e8b",
+  "source_ref": "f77698677eaa"
+ }
+}

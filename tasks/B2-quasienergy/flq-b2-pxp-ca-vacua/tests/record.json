@@ -1,0 +1,40 @@
+{
+ "id": "flq-b2-pxp-ca-vacua",
+ "track": "B2",
+ "split": "validation",
+ "question": "Consider a one-dimensional PXP chain of L qubits (L even, L divisible by 3, periodic boundary conditions) with the stroboscopic Floquet unitary U_{τ}=exp(-iτH_e)exp(-iτH_o), where H_e=Σ_{j even} P_{j-1}X_j P_{j+1} and H_o=Σ_{j odd} P_{j-1}X_j P_{j+1}, P_j=|0⟩_j⟨0|, X_j=|0⟩_j⟨1|+|1⟩_j⟨0|, evaluated at the integrable Trotter step τ=π/2. At this step the dynamics is equivalent to a classical cellular automaton (CA). The three translationally symmetric CA-vacuum eigenstates of U_{π/2} are constructed from the classical period-3 product configurations |0⟩^⊗L, |01⟩^⊗(L/2), |10⟩^⊗(L/2). The three vacuum quasienergies are folded dimensionless values ε/ω_eff (ω_eff=2π), determined by the CA eigenvalue condition ε₀∈{0,±2π/3} rad.\n\nOutput a JSON object {\"eps_vacuum_0_formula\": \"<expr>\", \"eps_vacuum_plus_formula\": \"<expr>\", \"eps_vacuum_minus_formula\": \"<expr>\"} using only Python arithmetic and the constants pi. Expressions are constant (no free variables needed).",
+ "answer": {
+  "eps_vacuum_0_formula": "0.0",
+  "eps_vacuum_plus_formula": "1/3",
+  "eps_vacuum_minus_formula": "-1/3"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {},
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/physrevlett.133.190404",
+  "system": "PXP Rydberg chain at integrable Trotter step",
+  "model_family": "rydberg",
+  "quantity_ids": [
+   "eps_vacuum_0_formula",
+   "eps_vacuum_plus_formula",
+   "eps_vacuum_minus_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "At τ=π/2 the three translationally symmetric eigenstates of U_{π/2} with quasienergies ε₀∈{0,±2π/3} are |ε₀⟩=(|0⟩^⊗L + e^{i(ε₀+πL/4)}|01⟩^⊗(L/2) + e^{-i(ε₀+πL/4)}|10⟩^⊗(L/2))/√3.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula-derived: CA vacuum quasienergies ε₀∈{0,±2π/3} rad; normalized by ω_eff=2π to give {0, ±1/3}; exact rational fractions.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "3c87bd3d4eaa8465",
+   "result": "survived"
+  },
+  "paper_ref": "52871fc0cb64",
+  "source_ref": "87716131700c"
+ }
+}

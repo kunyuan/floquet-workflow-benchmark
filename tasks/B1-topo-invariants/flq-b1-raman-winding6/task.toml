@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b1-raman-winding6"
+track = "B1"
+split = "validation"
+paper_ref = "0baa76ea858b"
+system = "1D cold-atom Raman lattice, periodic phase quench"
+model_family = "raman-lattice"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["winding_number"]
+
+[verifier]
+type = "integer_exact"
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

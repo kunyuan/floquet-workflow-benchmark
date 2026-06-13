@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-graphene-floquet-freq"
+track = "B2"
+split = "train"
+paper_ref = "897fa79558a3"
+system = "Graphene two-level model, off-resonant Floquet effective Hamiltonian, quantized field"
+model_family = "graphene-floquet"
+gold_provenance = "paper_reported_formula"
+verification_status = "needs_original_paper"
+quantity_ids = ["Omega_n0_formula", "Omega_n1_formula", "Omega_n2_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"p": [0.5, 2.0], "vF": [0.5, 2.0], "lam": [0.5, 2.0], "omega": [1.0, 4.0]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

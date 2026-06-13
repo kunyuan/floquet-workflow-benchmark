@@ -1,0 +1,22 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b2-qubit-oscillator-vv"
+track = "B2"
+split = "validation"
+paper_ref = "6852f0fb4afe"
+system = "Driven qubit-oscillator, Van Vleck L=0 sector quasienergy splitting"
+model_family = "qubit-oscillator"
+gold_provenance = "paper_reported_formula"
+verification_status = "source_verified"
+quantity_ids = ["Omega_K0_formula", "Omega_K1_formula", "Omega_K2_formula"]
+
+[verifier]
+type = "formula_equivalence"
+variables = {"Delta": [0.5, 2.0], "A": [0.5, 2.0], "omega_ex": [0.5, 2.0], "alpha": [0.1, 0.8]}
+rel_tol = 1e-06
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

@@ -1,0 +1,33 @@
+{
+ "id": "flq-b1-raman-winding6",
+ "track": "B1",
+ "split": "validation",
+ "question": "Consider a 1D cold-atom Raman lattice with Zeeman splitting m_z, spin-conserved hopping amplitude v_0, and spin-orbit coupling amplitude v_so. In the static regime the system is trivial when |m_z| > 2|v_0|. Apply a periodic quenching protocol that switches the spin-orbit coupling phase between 0 and pi (equivalently, v_so -> -v_so) with driving period T. The gap-closing conditions occur when T*|m_z - 2*v_0*exp(i*alpha)| = n_alpha * pi for odd integers n_alpha and alpha in {0, pi} (where alpha = 0 corresponds to k = 0 and alpha = pi corresponds to k = pi). The winding number W changes by +1 (decreases by 1) at each gap-closing associated with alpha = 0 (alpha = pi) as T increases. Starting from W = 0 at small T, and using parameter values m_z = 3*v_0 and v_so = v_0, determine the winding number W in the Floquet phase with the largest |W| that is reachable by increasing T continuously from zero while remaining in a gapped phase. This is the winding number of the 6th distinct topological phase encountered as T increases. Output a JSON object {\"winding_number\": <integer>}.",
+ "answer": {
+  "winding_number": 6
+ },
+ "verifier": {
+  "type": "integer_exact"
+ },
+ "metadata": {
+  "doi": null,
+  "system": "1D cold-atom Raman lattice, periodic phase quench",
+  "model_family": "raman-lattice",
+  "quantity_ids": [
+   "winding_number"
+  ],
+  "gold_provenance": "paper_reported_numeric",
+  "source_excerpt": "a winding number |W| that can be made arbitrarily large (explicitly demonstrated up to |W|=6). The number of degenerate edge modes equals |W|",
+  "verification_status": "source_verified",
+  "difficulty_note": "Periodic phase-quench of 1D Raman lattice; winding number accumulates integer by integer at each gap closing T|m_z - 2v_0 e^{i*alpha}| = n*pi, demonstrated numerically up to |W| = 6.",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "4f25014ec1ef6250",
+   "result": "survived"
+  },
+  "paper_ref": "0baa76ea858b",
+  "source_ref": "ab99021c2f69"
+ }
+}

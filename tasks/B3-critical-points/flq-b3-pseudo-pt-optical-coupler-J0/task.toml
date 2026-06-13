@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-pseudo-pt-optical-coupler-J0"
+track = "B3"
+split = "validation"
+paper_ref = "16e5edcab866"
+system = "two-channel biharmonically modulated optical coupler (f=1/4, phi=pi/2, balanced gain/loss)"
+model_family = "pt-optical-coupler"
+gold_provenance = "paper_reported_numeric"
+verification_status = "source_verified"
+quantity_ids = ["A_over_omega_c1"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.052083
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

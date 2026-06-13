@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+id = "flq-b3-floquet-delta-ad-pole-domain-exit"
+track = "B3"
+split = "train"
+paper_ref = "55fa65f23741"
+system = "1D driven delta-function scatterer (V_s=0, a_s=0), quasibound pole domain-exit"
+model_family = "floquet-delta-scatterer"
+gold_provenance = "paper_reported_numeric"
+verification_status = "needs_original_paper"
+quantity_ids = ["a_d_c2"]
+
+[verifier]
+type = "scalar_tolerance"
+rel_tol = 0.001337
+scorer = "python tests/score.py --pred pred.json"
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 3600.0

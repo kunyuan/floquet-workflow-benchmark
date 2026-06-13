@@ -1,0 +1,57 @@
+{
+ "id": "flq-b2-qubit-oscillator-vv",
+ "track": "B2",
+ "split": "validation",
+ "question": "Consider the driven qubit-oscillator Hamiltonian (hbar=1): H(t) = -(eps/2)*sigma_z - (Delta/2)*sigma_x + g*sigma_z*(B_dag+B) + Omega_osc*B_dag*B + (A/2)*cos(omega_ex*t)*sigma_z, where sigma_i are Pauli matrices, B, B_dag are harmonic-oscillator ladder operators, and eps = 0 (zero static bias, L=0 resonance). Using Van Vleck perturbation theory to first order in Delta (this order convention defines the requested quantities), derive the quasienergy splitting (avoided-crossing gap) Omega^K at oscillator level K for the L=0 resonance sector, as a closed form for each of K = 0, 1, 2. Here alpha = (2*g/Omega_osc)^2 is the polaron displacement parameter.\n\nDeclared symbols:\n  Delta    — qubit tunnel splitting (>0)\n  A        — drive amplitude (>0)\n  omega_ex — drive frequency (>0)\n  alpha    — polaron displacement parameter (2*g/Omega_osc)^2, alpha ∈ (0, 1)\n\nOutput a JSON object {\"Omega_K0_formula\": \"<expr>\", \"Omega_K1_formula\": \"<expr>\", \"Omega_K2_formula\": \"<expr>\"} using only the declared symbols and functions [abs, j0, exp].",
+ "answer": {
+  "Omega_K0_formula": "abs(Delta * j0(A/omega_ex) * exp(-alpha/2))",
+  "Omega_K1_formula": "abs(Delta * j0(A/omega_ex) * (1 - alpha) * exp(-alpha/2))",
+  "Omega_K2_formula": "abs(Delta * j0(A/omega_ex) * (1 - 2*alpha + alpha**2/2) * exp(-alpha/2))"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "Delta": [
+    0.5,
+    2.0
+   ],
+   "A": [
+    0.5,
+    2.0
+   ],
+   "omega_ex": [
+    0.5,
+    2.0
+   ],
+   "alpha": [
+    0.1,
+    0.8
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.1103/physreva.83.030301",
+  "system": "Driven qubit-oscillator, Van Vleck L=0 sector quasienergy splitting",
+  "model_family": "qubit-oscillator",
+  "quantity_ids": [
+   "Omega_K0_formula",
+   "Omega_K1_formula",
+   "Omega_K2_formula"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "the avoided-gap Omega^K equiv |Delta_0 L_K^0(alpha) e^{-alpha/2}| vanishes at any value of alpha that is a zero of the ordinary Laguerre polynomial L_K^0(alpha)",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula: Omega^K = |Delta*J_0(A/omega_ex)*L_K^0(alpha)*exp(-alpha/2)|. Params: Delta=1, A=1, omega_ex=1, g=1/sqrt(2), Omega_osc=2, alpha=0.5. J_0(1)=0.765197686557967; exp(-0.25)=0.778800783071405. L_0^0(0.5)=1, L_1^0(0.5)=0.5, L_2^0(0.5)=0.125. Omega^0=0.595936557495772, Omega^1=0.297968278747886, Omega^2=0.074492069686972.",
+  "quality_notes": "converted to formula answer 2026-06-13",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "a3782c5354614070",
+   "result": "survived"
+  },
+  "paper_ref": "6852f0fb4afe",
+  "source_ref": "5bd16bb0efeb"
+ }
+}

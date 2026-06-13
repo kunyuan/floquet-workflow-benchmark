@@ -1,0 +1,55 @@
+{
+ "id": "flq-b2-nh-oscillator-quasienergies",
+ "track": "B2",
+ "split": "train",
+ "question": "Consider the non-Hermitian driven harmonic oscillator with Hamiltonian (hbar = 1) H = (omega - i*gamma)*(a_dag*a + 1/2) + f0*cos(Omega_d*t)*(a + a_dag), where omega > 0 is the natural frequency, gamma > 0 is the damping rate, f0 > 0 is the real drive amplitude, and Omega_d > 0 is the drive frequency. The Floquet quasienergies form a complex ladder eps_n (n = 0, 1, 2, ...) with Im(eps_n) < 0 signaling exponential decay. Derive the closed-form complex expressions for eps_0/omega and eps_1/omega.\n\nDeclared symbols:\n  omega   — natural frequency (>0), omega ∈ [0.8, 2.0]\n  gamma   — damping rate (>0), gamma ∈ [0.05, 0.5]\n  Omega_d — drive frequency (>0), Omega_d ∈ [0.2, 1.0]\n  f0      — real drive amplitude (>0), f0 ∈ [0.2, 1.5]\n\nOutput a JSON object {\"eps0_over_omega\": \"<complex expression>\", \"eps1_over_omega\": \"<complex expression>\"} using only the declared symbols and literal 1j for the imaginary unit.",
+ "answer": {
+  "eps0_over_omega": "((omega - 1j*gamma)*(0.5 - f0**2/(2*((omega - 1j*gamma)**2 - Omega_d**2)))) / omega",
+  "eps1_over_omega": "((omega - 1j*gamma)*(1.5 - f0**2/(2*((omega - 1j*gamma)**2 - Omega_d**2)))) / omega"
+ },
+ "verifier": {
+  "type": "formula_equivalence",
+  "variables": {
+   "omega": [
+    0.8,
+    2.0
+   ],
+   "gamma": [
+    0.05,
+    0.5
+   ],
+   "Omega_d": [
+    0.2,
+    1.0
+   ],
+   "f0": [
+    0.2,
+    1.5
+   ]
+  },
+  "rel_tol": 1e-06
+ },
+ "metadata": {
+  "doi": "10.48550/arXiv.0910.1549",
+  "system": "Non-Hermitian driven damped harmonic oscillator, complex Floquet quasienergy ladder",
+  "model_family": "non-hermitian-oscillator",
+  "quantity_ids": [
+   "eps0_over_omega",
+   "eps1_over_omega"
+  ],
+  "gold_provenance": "paper_reported_formula",
+  "source_excerpt": "epsilon_n = hbar*omega_tilde*(n + 1/2 - f0^2/[2*(omega_tilde^2 - Omega^2)]), n=0,1,2,...; omega_tilde = omega - i*gamma.",
+  "verification_status": "source_verified",
+  "difficulty_note": "Formula (conclusion_6): epsilon_n = omega_tilde*(n + 1/2 - f0^2/(2*(omega_tilde^2 - Omega^2))). Params: omega=1.0, gamma=0.2, Omega=0.5, f0=0.5. omega_tilde = 1.0 - 0.2i. omega_tilde^2 - Omega^2 = (0.71-0.4j). f0^2/(2*denom) = (0.1336395121216684+0.07528986598403856j). eps_0/omega = 0.35130251 + (-0.14856196)i. eps_1/omega = 1.35130251 + (-0.34856196)i. Im < 0 signals exponential decay (non-Hermitian). Stored as 4 plain real floats.",
+  "quality_notes": "2026-06-13: removed contradictory /2 in drive term (question-gold convention mismatch found by baseline solver; gold uses f0*(a+a_dag) convention per QA-6 recomputation)",
+  "cold_solve": {
+   "round": 3,
+   "probe_model": "claude-sonnet (baseline solve run)",
+   "date": "2026-06-13",
+   "question_sha256": "4cca6f245953d06f",
+   "result": "cracked"
+  },
+  "paper_ref": "89c4716495c9",
+  "source_ref": "fa1dfc361d22"
+ }
+}
