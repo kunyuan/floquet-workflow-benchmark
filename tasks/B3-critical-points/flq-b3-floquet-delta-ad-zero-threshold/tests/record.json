@@ -28,6 +28,7 @@
    "question_sha256": "09fea9a5fb8d00d4",
    "result": "survived"
   },
+  "question_clarity_note": "baseline-run finding: gold 0.782 independently reproduced (zero exits eps=0 / enters eps=1, same event); a SECOND threshold exists at 1.165. Solver returned 1.165 (wrong branch). Gold is CORRECT; the question must disambiguate WHICH threshold is asked. Question-clarity fix, not a gold error.",
   "paper_ref": "55fa65f23741",
   "source_ref": "9a18c9525cea"
  }

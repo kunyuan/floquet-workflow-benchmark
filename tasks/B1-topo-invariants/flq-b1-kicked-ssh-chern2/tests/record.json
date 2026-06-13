@@ -27,7 +27,7 @@
    "question_sha256": "b418e5bd8e6ddff4",
    "result": "survived"
   },
-  "gold_dispute": "baseline: 4 independent methods (FHS/Berry/solid-angle/winding) all give C=0 for the phi=0 model; solver notes phi=pi/2 (not the question params) gives C=1 — likely question-parameter or gold error, adjudicate against original paper",
+  "gold_dispute": "THREE independent solvers now confirm C=0 for the phi=0 model (x1: FHS+Berry+solid-angle+winding; straggler: Berry curvature odd in theta => exact cancellation). Name \"chern2\" implies gold=2, reachable only at phi!=0. Strong evidence of a QUESTION-PARAMETER error (phi should not be 0) rather than a hard task — fix the question or gold against the original paper.",
   "paper_ref": "c9283b636c5a",
   "source_ref": "2f1b154d5039"
  }

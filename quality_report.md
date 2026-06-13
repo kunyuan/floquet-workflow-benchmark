@@ -36,6 +36,14 @@ excluded from scored use until adjudicated)
   explicit π-edge-modes vs gold (1,1).
 - `flq-b2-graphene-floquet-freq`: baseline mass term carries vF^4 vs gold's
   bare λ^4 (possible vF-absorption convention).
+Corroboration from redundant solver runs (independent re-derivations of the
+same two tasks): `kicked-ssh-chern2` confirmed C=0 a **third** time (Berry
+curvature odd in θ ⇒ exact cancellation for φ=0) — the gold of 2 is almost
+certainly a question-parameter error (φ should be ≠0). `delta-ad-zero-threshold`
+is NOT a gold error: the gold 0.782 was independently reproduced; the question
+merely fails to disambiguate which of two thresholds (0.782 vs 1.165) is asked
+— a question-clarity fix.
+
 These are the highest-value output of the run: independent recomputation
 (QA-6) had "confirmed" several via the source formula / region logic, but
 genuine numerical re-derivation from H(t) disagrees — i.e. QA-6's
