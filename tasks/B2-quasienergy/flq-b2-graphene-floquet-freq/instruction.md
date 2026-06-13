@@ -59,7 +59,7 @@ Consider the low-energy two-level model of graphene with Hamiltonian H_0 = v_F*(
 Declared symbols:
   p      — momentum magnitude (>0)
   vF     — Fermi velocity (>0)
-  lam    — light-matter coupling constant lambda (>0)
+  lam    — light-matter coupling lambda = (e*vF/c)*A0 (A0 = vector-potential amplitude); lambda already carries units of ENERGY (it absorbs one factor of vF), so introduce NO additional factors of vF beyond those written explicitly (>0)
   omega  — drive frequency (>0)
 
 Output a JSON object {"Omega_n0_formula": "<expr for n=0>", "Omega_n1_formula": "<expr for n=1>", "Omega_n2_formula": "<expr for n=2>"} using only the declared symbols and functions [sqrt]. Each formula gives the dimensionless ratio Omega_Floq_G(n)/omega for the stated n.

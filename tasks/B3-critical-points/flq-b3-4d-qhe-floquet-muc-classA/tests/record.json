@@ -28,7 +28,7 @@
    "question_sha256": "b36b2a288c654568",
    "result": "survived"
   },
-  "quality_notes": "incomplete question: <missing: numeric 1/K_critical>; fetch from original paper before scored use",
+  "quality_notes": "incomplete question: <missing: numeric 1/K_critical>; fetch from original paper before scored use | adjudicated 2026-06-13 vs arXiv:1206.0099 Table II: gold mu_c=3.51 (class A, C=-1) CONFIRMED. But NOT cleanly self-contained: mu_c is a finite-time-scaling fixed point read along the Fig.1 metal-insulator phase boundary, not at a tabulated 1/K. Retained as needs_original_paper (requires the paper Fig.1 to set the disorder cut + incommensurate frequency set).",
   "paper_ref": "43f69fd7b910",
   "source_ref": "f85a41b2966e"
  }

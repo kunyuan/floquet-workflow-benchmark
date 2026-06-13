@@ -23,32 +23,28 @@ non-generic-integer items resist.
   exponentiation; Python read it as XOR and errored). Pure false-negative;
   fixed. Lifted B2 from 4→6 (train) and 0→1 (val) with no gold change.
 
-### Gold disputes surfaced (flagged `needs_original_paper` + `gold_dispute`,
-excluded from scored use until adjudicated)
-- `flq-b1-tbg-circpol-W-spectral`: 3 independent solvers get W=+1 vs gold −1
-  (spectral-winding sign convention under right-CP).
-- `flq-b1-kicked-ssh-chern2`: 4 independent methods give C=0 for the φ=0
-  model; φ=π/2 (not the question's params) gives C=1 — likely a
-  question-parameter or gold error.
-- `flq-b1-bbh-n0-0-npi-4`: N_0, N_π match gold; V_R (0 vs 1) and
-  corner_states (4 vs 16) disagree.
-- `flq-b1-dqs-floquet-1d-nu0-nupi`: baseline OBC spectrum gives (0,1) with
-  explicit π-edge-modes vs gold (1,1).
-- `flq-b2-graphene-floquet-freq`: baseline mass term carries vF^4 vs gold's
-  bare λ^4 (possible vF-absorption convention).
-Corroboration from redundant solver runs (independent re-derivations of the
-same two tasks): `kicked-ssh-chern2` confirmed C=0 a **third** time (Berry
-curvature odd in θ ⇒ exact cancellation for φ=0) — the gold of 2 is almost
-certainly a question-parameter error (φ should be ≠0). `delta-ad-zero-threshold`
-is NOT a gold error: the gold 0.782 was independently reproduced; the question
-merely fails to disambiguate which of two thresholds (0.782 vs 1.165) is asked
-— a question-clarity fix.
+### Gold disputes — ADJUDICATED against the knowledge-graph service + the original papers (2026-06-13)
 
-These are the highest-value output of the run: independent recomputation
-(QA-6) had "confirmed" several via the source formula / region logic, but
-genuine numerical re-derivation from H(t) disagrees — i.e. QA-6's
-formula-faithful check cannot catch a wrong *premise*; only an independent
-build of the model can. Adjudication needs the original papers.
+The baseline run surfaced these; each was then cross-checked against the the knowledge-graph service
+node AND the original publication. Outcome: **1 genuine gold error (an the knowledge-graph service
+fabrication), 5 question defects with correct golds, 1 gold still unreliable.**
+
+| record | verdict | action taken |
+|---|---|---|
+| `tbg-circpol-W-spectral` | **GOLD ERROR**: the "spectral winding W=−1" does **not appear in the paper** (arXiv:1910.13510) — an the knowledge-graph service formalization fabricated the invariant. | gold REPLACED with the paper's actual Fig.5 result: lower Floquet band Chern number C=−1 at K valley under σ+; question rewritten. → `paper_verified` |
+| `bbh-n0-0-npi-4` | gold CORRECT (arXiv:2504.14846 states N_0=0, N_π=4, V_R=1, 16 corner states); solver erred (used the untwisted chiral operator; counted per-corner not total). | V_R **dropped** (its correct value needs the paper's PT-class-conversion punchline — can't be stated in Q without leaking); corner count clarified as total over 4 corners. → `paper_verified` |
+| `kicked-ssh-chern2` | gold CORRECT (DOI 10.1007/s10773-020-04545-7: Y-kick gives C=±2); question forced φ=0 where a θ→−θ symmetry pins C=0. | question fixed to a 2D (g,φ) scan with φ≠0. → `paper_verified` |
+| `graphene-floquet-freq` | gold CORRECT (Eq.24); solver's extra vF^4 came from a different λ convention. | question now defines λ=(e·vF/c)·A₀. → `paper_verified` |
+| `ssh-synth-winding2` | gold CORRECT (arXiv:2307.01283, W=1 verified); question lacked hopping magnitudes. | magnitudes |c|/|a|=0.854, |d|/|a|=2.27, arg(d):0→π added. → `paper_verified` |
+| `4d-qhe-muc-classA` | gold CORRECT (Table II, μ_c=3.51) but the value is a scaling fixed-point read off the Fig.1 phase boundary — **not cleanly self-contained**. | kept `needs_original_paper` with the finding documented. |
+| `dqs-floquet-1d-nu0-nupi` | **GOLD UNRELIABLE**: α=π,β=3π/2 sits on a phase boundary (π-gap closed) → ν_π undefined; gold (1,1) is a gapless-point artifact, not a valid bulk phase (off-boundary: (1,2) or (1,0)). the knowledge-graph service graph empty. | **RECORD REMOVED** from the suite (no reliable gold; not worth carrying a do-not-score stub). |
+
+Methodological payoff: QA-6's formula-faithful recompute "confirmed" several
+of these from the source formula, yet independent re-derivation from H(t)
+(the baseline run) disagreed — because QA-6 cannot catch a wrong *premise*,
+only an independent model build can. The single clearest catch is the **the knowledge-graph service
+fabrication** in `tbg`: a formalization invented an invariant absent from the
+paper. This is the strongest argument for the baseline-run-as-QA layer.
 
 ### Genuine (non-dispute) hard fails — the good kind
 - `flq-b2-sq-well-osc-barrier`: solved to 3.6% but tol 0.1% (metastable
@@ -64,7 +60,7 @@ build of the model can. Adjudication needs the original papers.
 
 ## Final state (supersedes the inventory below where they differ)
 
-41 records / 4 tracks (B1 12, B2 12, B3 10, B4 7), all materialized as harbor
+40 records / 4 tracks (B1 11, B2 12, B3 10, B4 7; dqs removed post-adjudication), all materialized as harbor
 tasks (`tasks/`), validator PASS. Questions are assembled from three modules
 (workflow preamble + environment protocol + per-paper part) via
 `scripts/assemble_prompt.py`. Post-build hardening applied:
@@ -98,7 +94,7 @@ Built from the knowledge-graph service knowledge graphs of a curated literature 
 agents from the knowledge-graph service node content under explicit integrity rules; every record
 carries `source_node_id` + verbatim `source_excerpt`.
 
-## Final inventory: 41 records
+## Final inventory: 40 records (after removing dqs in adjudication)
 
 | Track | train | validation | gold: paper_reported | gold: formula_derived | needs original-paper check |
 |---|---|---|---|---|---|

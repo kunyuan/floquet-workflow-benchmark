@@ -2,7 +2,7 @@
  "id": "flq-b2-graphene-floquet-freq",
  "track": "B2",
  "split": "train",
- "question": "Consider the low-energy two-level model of graphene with Hamiltonian H_0 = v_F*(p_x*sigma_y + p_y*sigma_x) coupled to a single-mode quantized electromagnetic field with coupling constant lambda and drive frequency omega. In the off-resonant (high-frequency, |omega| >> bandwidth) Floquet approximation, the effective Hamiltonian is H_eff = H_0 + (1/omega)*[V_-, V_+], and derive the effective Floquet oscillation frequency Omega_Floq_G(n) of the photon-dressed Dirac problem from the rotating-frame effective Hamiltonian, giving the dimensionless ratio Omega_Floq_G(n)/omega.\n\nDeclared symbols:\n  p      — momentum magnitude (>0)\n  vF     — Fermi velocity (>0)\n  lam    — light-matter coupling constant lambda (>0)\n  omega  — drive frequency (>0)\n\nOutput a JSON object {\"Omega_n0_formula\": \"<expr for n=0>\", \"Omega_n1_formula\": \"<expr for n=1>\", \"Omega_n2_formula\": \"<expr for n=2>\"} using only the declared symbols and functions [sqrt]. Each formula gives the dimensionless ratio Omega_Floq_G(n)/omega for the stated n.",
+ "question": "Consider the low-energy two-level model of graphene with Hamiltonian H_0 = v_F*(p_x*sigma_y + p_y*sigma_x) coupled to a single-mode quantized electromagnetic field with coupling constant lambda and drive frequency omega. In the off-resonant (high-frequency, |omega| >> bandwidth) Floquet approximation, the effective Hamiltonian is H_eff = H_0 + (1/omega)*[V_-, V_+], and derive the effective Floquet oscillation frequency Omega_Floq_G(n) of the photon-dressed Dirac problem from the rotating-frame effective Hamiltonian, giving the dimensionless ratio Omega_Floq_G(n)/omega.\n\nDeclared symbols:\n  p      — momentum magnitude (>0)\n  vF     — Fermi velocity (>0)\n  lam    — light-matter coupling lambda = (e*vF/c)*A0 (A0 = vector-potential amplitude); lambda already carries units of ENERGY (it absorbs one factor of vF), so introduce NO additional factors of vF beyond those written explicitly (>0)\n  omega  — drive frequency (>0)\n\nOutput a JSON object {\"Omega_n0_formula\": \"<expr for n=0>\", \"Omega_n1_formula\": \"<expr for n=1>\", \"Omega_n2_formula\": \"<expr for n=2>\"} using only the declared symbols and functions [sqrt]. Each formula gives the dimensionless ratio Omega_Floq_G(n)/omega for the stated n.",
  "answer": {
   "Omega_n0_formula": "sqrt((p*vF)**2 + lam**4/omega**2)/omega",
   "Omega_n1_formula": "sqrt((p*vF)**2 + 4*lam**4/omega**2)/omega",
@@ -41,17 +41,9 @@
   ],
   "gold_provenance": "paper_reported_formula",
   "source_excerpt": "Omega_{Floq-G}(n) = sqrt(p^2 v_F^2 + lambda^4(n+1)^2/omega^2)",
-  "verification_status": "needs_original_paper",
+  "verification_status": "paper_verified",
   "difficulty_note": "Formula: Omega_Floq_G(n)/omega = sqrt((p*v_F)^2 + lambda^4*(n+1)^2/omega^2)/omega. Params: v_F=1, lambda=1, omega=2, p=1. n=0: sqrt(1+1/4)/2 = sqrt(5)/4 = 0.559016994374947. n=1: sqrt(1+1)/2 = 1/sqrt(2) = 0.707106781186548. n=2: sqrt(1+9/4)/2 = sqrt(13)/4 = 0.901387818865997.",
-  "quality_notes": "converted to formula answer 2026-06-13",
-  "cold_solve": {
-   "round": 3,
-   "probe_model": "claude-sonnet (baseline solve run)",
-   "date": "2026-06-13",
-   "question_sha256": "efff8289c581c705",
-   "result": "survived"
-  },
-  "gold_dispute": "baseline derives mass term vF^4*lam^4 vs gold lam^4 (factor of vF^4); possible vF-absorption convention in gold — adjudicate",
+  "quality_notes": "converted to formula answer 2026-06-13 | adjudicated 2026-06-13 vs DOI 10.1007/s11664-019-07650-4 Eq.(24): gold lam^4 is faithful; paper defines lambda=(e*vF/c)A0 (absorbs vF). Question now states this; solver vF^4 came from the other lambda convention.",
   "paper_ref": "897fa79558a3",
   "source_ref": "13db3b9e25f6"
  }

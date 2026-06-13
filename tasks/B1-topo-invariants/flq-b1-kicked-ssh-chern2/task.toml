@@ -8,7 +8,7 @@ paper_ref = "c9283b636c5a"
 system = "kicked extended SSH chain (synthetic 2D topology via crystal angle)"
 model_family = "kicked-ssh"
 gold_provenance = "paper_reported_numeric"
-verification_status = "needs_original_paper"
+verification_status = "paper_verified"
 quantity_ids = ["max_chern_number_magnitude"]
 
 [verifier]

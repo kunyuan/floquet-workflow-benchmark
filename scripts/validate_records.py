@@ -36,7 +36,7 @@ def main():
         track = jsonl.parent.name
         records = [json.loads(line) for line in jsonl.read_text().splitlines() if line.strip()]
         splits = Counter(r.get("split") for r in records)
-        review = sum(1 for r in records if r["metadata"].get("verification_status") != "source_verified")
+        review = sum(1 for r in records if r["metadata"].get("verification_status") not in ("source_verified", "paper_verified"))
         ids = Counter(r["id"] for r in records)
         for rid, n in ids.items():
             if n > 1:

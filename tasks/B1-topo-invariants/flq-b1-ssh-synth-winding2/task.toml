@@ -8,7 +8,7 @@ paper_ref = "3274384a91c3"
 system = "extended SSH chain in synthetic frequency dimension (fiber-loop cavity, EOM drive)"
 model_family = "synthetic-frequency-lattice"
 gold_provenance = "paper_reported_numeric"
-verification_status = "needs_original_paper"
+verification_status = "paper_verified"
 quantity_ids = ["winding_number"]
 
 [verifier]

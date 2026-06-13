@@ -8,8 +8,8 @@ paper_ref = "c59fc2d257a3"
 system = "twisted bilayer graphene (TBG) under off-resonant circularly polarized light"
 model_family = "tbg-floquet"
 gold_provenance = "formula_derived"
-verification_status = "needs_original_paper"
-quantity_ids = ["W_spectral"]
+verification_status = "paper_verified"
+quantity_ids = ["chern_lower_band"]
 
 [verifier]
 type = "integer_exact"
